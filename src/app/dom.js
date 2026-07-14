@@ -54,6 +54,8 @@ const ICON_PATHS = {
   print: ["M7 9V3h10v6", "M7 17H5a2 2 0 01-2-2v-4a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2h-2", "M7 14h10v7H7z"],
   close: ["M5 5l14 14", "M19 5L5 19"],
   check: ["M5 12l4 4L19 6"],
+  download: ["M12 3v12", "M7 10l5 5 5-5", "M5 20h14"],
+  warning: ["M12 3L2 21h20L12 3z", "M12 9v5", "M12 18h.01"],
   menu: ["M4 6h16", "M4 12h16", "M4 18h16"],
   chevron: ["M9 18l6-6-6-6"],
 };

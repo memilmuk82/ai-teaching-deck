@@ -9,6 +9,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "validate": "node scripts/validate-deck.mjs",
+    "check:downloads": "node scripts/check-curriculum-downloads.mjs",
+    "sync:curriculum": "node scripts/sync-curriculum-downloads.mjs",
     "new:section": "node scripts/create-section.mjs"
   },
   "devDependencies": {

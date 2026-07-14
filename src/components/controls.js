@@ -4,6 +4,7 @@ export function createControls(actions) {
   const previous = iconButton("이전", "arrow-left", "control-button control-button--nav");
   const next = iconButton("다음", "arrow-right", "control-button control-button--nav control-button--primary");
   const overview = iconButton("개요", "grid");
+  const curriculum = iconButton("교육과정 자료", "download");
   const notes = iconButton("노트", "note");
   notes.setAttribute("aria-pressed", "false");
   const fullscreen = iconButton("전체 화면", "fullscreen");
@@ -13,6 +14,7 @@ export function createControls(actions) {
   previous.addEventListener("click", actions.previous);
   next.addEventListener("click", actions.next);
   overview.addEventListener("click", actions.overview);
+  curriculum.addEventListener("click", actions.curriculum);
   notes.addEventListener("click", actions.notes);
   fullscreen.addEventListener("click", actions.fullscreen);
   print.addEventListener("click", actions.print);
@@ -40,7 +42,7 @@ export function createControls(actions) {
     "footer",
     { className: "deck-footer" },
     el("div", { className: "footer-group footer-group--nav" }, previous, next),
-    el("div", { className: "footer-group footer-group--tools" }, overview, notes, fullscreen, print, help),
+    el("div", { className: "footer-group footer-group--tools" }, curriculum, overview, notes, fullscreen, print, help),
   );
 
   return {
@@ -49,6 +51,7 @@ export function createControls(actions) {
     previous,
     next,
     overview,
+    curriculum,
     notes,
     fullscreen,
     print,

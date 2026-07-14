@@ -1,6 +1,6 @@
 # AI Prompt Training Deck
 
-중학교 교사 대상 100분 연수에서 사용하는 웹 기반 프레젠테이션입니다. 이 저장소의 초기 버전은 전체 연수 중 **도입 → 이미지 프롬프트 워밍업 → 수업자료 프롬프트로 전환** 구간, 총 18개 슬라이드를 구현합니다.
+중학교 교사 대상 100분 연수에서 사용하는 60장 웹 기반 프레젠테이션입니다. **도입 → 이미지 프롬프트 워밍업 → 교육과정 연결 → 수업 원칙 추출 → Gemini Gem 지시사항 → 단원·전이 시험 → 생성기 규칙 개선 → 부록**을 실제 슬라이드로 구현합니다.
 
 연수의 목표는 AI에게 결과물 한 번을 요청하는 데 있지 않습니다. 이미지의 표현 규칙을 관찰하고 재사용 가능한 프롬프트로 다듬은 뒤, 같은 사고 과정을 교사의 수업자료 생성 규칙으로 전환하는 데 있습니다.
 
@@ -11,6 +11,8 @@
 - Vanilla JavaScript ES Modules
 - Vite
 - Node.js 기반 검증·생성·빌드 스크립트
+- Docker 멀티스테이지 빌드
+- Nginx 정적 파일 서빙 및 호스트 reverse proxy
 
 React, Vue, Svelte, Angular, TypeScript, Reveal.js, 백엔드 서버와 데이터베이스는 사용하지 않습니다. 슬라이드의 모든 글자는 JavaScript 콘텐츠 객체에 일반 문자열로 저장되고, 브라우저에서는 선택·복사 가능한 DOM 텍스트로 표시됩니다.
 
@@ -54,6 +56,7 @@ npm run preview
 | 개요 보기 | `O` 또는 화면 버튼 |
 | 발표자 노트 | `N` 또는 화면 버튼 |
 | 단축키 도움말 | `?` 또는 화면 버튼 |
+| 교과 교육과정 다운로드 | `교육과정 자료` 버튼 또는 슬라이드 19 CTA |
 | 모바일·태블릿 이동 | 슬라이드에서 좌우 swipe |
 
 현재 슬라이드는 `#/slide/6`과 같은 hash에 반영되므로 새로고침하거나 링크를 공유해도 위치가 복원됩니다. `revealStep`이 있는 요소는 다음 키를 누를 때 슬라이드 이동 전에 차례로 공개됩니다. 프롬프트 블록의 복사 버튼으로 프롬프트 전체를 복사할 수 있으며, 발표 타이머는 시작·일시 정지·초기화를 지원합니다.
@@ -70,14 +73,44 @@ src/
 ├── components/          # 제어 UI와 재사용 렌더링 구성 요소
 └── content/
     ├── deck.config.js   # 덱 메타데이터
+    ├── curriculum-downloads.js # ZIP manifest 기반 교과 카탈로그
     ├── index.js         # 섹션 등록과 전체 슬라이드 조합
     └── sections/        # 섹션 하나당 콘텐츠 파일 하나
         ├── 01-intro.js                       # 슬라이드 01–04
         ├── 02-image-prompt-warmup.js         # 슬라이드 05–15
-        └── 03-teaching-material-transition.js # 슬라이드 16–18
+        ├── 03-teaching-material-transition.js # 슬라이드 16–18
+        ├── 04-curriculum-connection.js         # 슬라이드 19–22
+        ├── 05-fixed-values-and-variables.js    # 슬라이드 23–25
+        ├── 06-principle-extraction.js          # 슬라이드 26–29
+        ├── 07-gem-instructions.js              # 슬라이드 30–33
+        ├── 08-first-generator-test.js          # 슬라이드 34–36
+        ├── 09-transfer-test.js                 # 슬라이드 37–39
+        ├── 10-rule-improvement.js              # 슬라이드 40–41
+        ├── 11-summary.js                       # 슬라이드 42–44
+        └── 12-appendix.js                      # 슬라이드 45–60
 ```
 
-초기 18개 슬라이드는 도입, 이미지 프롬프트 워밍업, 수업자료로 전환의 논리 섹션별 파일 3개에 나뉩니다. 각 파일은 자체 `slides` 배열과 named `DeckSection` export를 가지며, `src/content/index.js`가 섹션을 순서대로 등록하고 전체 슬라이드를 조합합니다. 기존 콘텐츠를 바꾸지 않고 새 섹션 파일을 추가·등록하면 엔진 수정 없이 덱을 확장할 수 있습니다. 슬라이드 객체, 지원 layout·block type, 표와 프롬프트 작성법은 [새 슬라이드 추가 안내](docs/ADDING_SLIDES.md)를 참고하세요.
+전체 60개 슬라이드는 논리 섹션별 파일 12개에 나뉩니다. 기존 슬라이드 1–18은 그대로 유지하고 19–60을 추가했습니다. 각 파일은 자체 `slides` 배열과 named `DeckSection` export를 가지며, `src/content/index.js`가 섹션을 순서대로 등록하고 전체 슬라이드를 조합합니다. 슬라이드 객체, 지원 layout·block type, 표와 프롬프트 작성법은 [새 슬라이드 추가 안내](docs/ADDING_SLIDES.md)를 참고하세요.
+
+## 교과 교육과정 다운로드
+
+원본 통합 ZIP은 다음 경로에 둡니다. `tmp/` 전체는 Git에서 제외되며 원본 ZIP과 작업용 압축 해제 파일은 배포 자산에 포함되지 않습니다.
+
+```text
+tmp/curriculum-sources/2022개정_중학교_교육과정_통합_Markdown.zip
+```
+
+실제 교과 Markdown 24개는 원문을 수정하지 않고 `public/downloads/curriculum/`에 복사됩니다. 카탈로그는 ZIP의 `manifest.json`, `MERGE_REPORT.md`와 실제 파일을 근거로 `src/content/curriculum-downloads.js`에 생성됩니다. 새 ZIP을 반영하는 절차는 다음과 같습니다.
+
+1. 통합 ZIP 하나를 `tmp/curriculum-sources/`에 둡니다.
+2. `npm run sync:curriculum`을 실행합니다.
+3. `public/downloads/curriculum/`과 `src/content/curriculum-downloads.js`를 확인합니다.
+4. `npm run validate`를 실행합니다.
+5. `npm run build`를 실행합니다.
+
+동기화 스크립트는 ZIP 개수와 파일명, 내부 경로 이탈, 필수 메타데이터, manifest SHA-256을 검사합니다. 생활 외국어 8개는 `OCR 주의`와 `[원문 확인 필요]` 개수를 카탈로그와 다운로드 패널에 문자로 표시하며, 해당 표시를 삭제하거나 임의 교정하지 않습니다.
+
+다운로드 기능은 `#/slide/19`의 CTA 또는 하단 `교육과정 자료` 버튼으로 확인합니다. 교과명 검색, 상태·주의 문구, 실제 파일 다운로드, ESC 닫기와 포커스 복귀를 지원합니다.
 
 새 섹션의 빈 파일을 안전하게 만들려면 다음 명령을 사용할 수 있습니다.
 
@@ -101,20 +134,30 @@ public/assets/images/transformed-photo.webp
 
 ## 검증과 빌드
 
-콘텐츠 스키마, 섹션과 슬라이드의 연결, 중복 ID, 지원하지 않는 block type, 프롬프트 문자열과 초기 18개 슬라이드를 검사합니다.
+콘텐츠 스키마, 섹션과 슬라이드의 연결, 정확히 60장인지, 중복 ID, 지원하지 않는 block type, 프롬프트 문자열, 기존 1–18 객체 불변, 슬라이드 19 action과 공개 교과 파일의 경로·중복·SHA-256을 검사합니다.
 
 ```bash
 npm run validate
+npm run check:downloads
 npm run build
 ```
 
 `npm run validate`가 실패하면 출력된 슬라이드 번호와 필드명을 먼저 수정하세요. `npm run build` 결과는 `dist/`에 생성됩니다. 배포 전에는 두 명령을 모두 통과시키고 브라우저에서 대표 슬라이드, 키보드 이동, 개요, 노트, 복사, 이미지 fallback 및 콘솔 오류를 확인하세요.
 
-## OCI 배포
+## Docker·OCI 배포
 
-이 저장소는 서버 설정을 자동으로 활성화하지 않습니다. 빌드 결과 배포용 `scripts/deploy-oci.sh`와 Nginx 설정 예시만 제공합니다. SSH 접속부터 Nginx 검증·reload, OCI Security List/NSG, 도메인과 TLS까지의 절차는 [OCI 배포 안내](docs/DEPLOY_OCI.md)를 따르세요.
+프로덕션 이미지는 Node.js 빌드 단계에서 검증과 Vite 빌드를 실행하고, 최종 Nginx 이미지에는 정적 결과물만 포함합니다. 로컬에서 컨테이너 구성을 확인하려면 다음 명령을 사용합니다.
 
-GitHub 원격 저장소가 원본이고, OCI의 `/srv/ai-prompt-training-deck` clone은 배포용 작업 사본이라는 원칙을 유지합니다. 실제 서비스 웹 루트의 파일을 직접 수정하지 마세요.
+```bash
+docker compose build
+docker compose up -d
+docker compose ps
+curl http://127.0.0.1:8080/healthz
+```
+
+Compose 포트는 `127.0.0.1:8080`에만 바인딩됩니다. 공개 도메인 `ai-teaching.memilmuk82.com`의 요청은 호스트 Nginx가 이 포트로 reverse proxy하며, TLS 인증서도 호스트 Nginx에서 관리합니다. DNS only 상태의 Cloudflare 레코드로 인증서를 먼저 발급한 뒤 SSL/TLS 모드를 **Full (strict)**로 설정하고 프록시를 활성화합니다.
+
+SSH 접속, 컨테이너 기동, Nginx 활성화, 인증서 발급, Cloudflare 전환과 업데이트 절차는 [OCI Docker 배포 안내](docs/DEPLOY_OCI.md)를 따르세요. 저장소의 `scripts/deploy-oci.sh`는 Docker 도입 전 정적 웹 루트 배포가 필요한 경우에만 사용하는 레거시 방식입니다.
 
 ## GitHub 원격 저장소 연결
 
@@ -152,10 +195,7 @@ git push -u origin main
 
 ## 향후 확장
 
-- 별도 Markdown 개요를 바탕으로 새 섹션 콘텐츠 추가
-- 교과·단원별 교육과정 연결 실습 섹션 추가
-- 첫 단원/전이 시험과 생성 규칙 수정 섹션 추가
-- 새 범용 layout과 block renderer 추가
+- 실제 연수 결과를 바탕으로 단원 시험 사례 보강
+- 최신 Gemini 화면을 직접 확인한 캡처 자산 추가
 - 사용자 소유의 적법한 이미지·캐릭터 자산 교체
-
-다음 Markdown 개요를 Codex로 구현할 때는 [다음 섹션 요청 템플릿](docs/CODEX_NEXT_SECTION_PROMPT.md)을 그대로 복사해 사용하세요.
+- 교과 ZIP 새 버전 동기화와 검증 자동화 고도화

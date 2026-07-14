@@ -110,6 +110,7 @@ layout은 슬라이드 전체 배치를 설명하고, 실제 내용은 `blocks`�
 | `image` | 실제 이미지와 fallback |
 | `image-comparison` | 변환 전후 이미지 비교 |
 | `character-message` | 캐릭터와 DOM 말풍선 |
+| `action` | 대화상자 등 앱 기능을 여는 CTA와 인쇄용 대체 안내 |
 | `spacer` | 제한적인 시각 여백 |
 
 각 block에 `revealStep` 숫자를 지정하면 다음 키를 누를 때 해당 순서에 공개됩니다. 정보 이해에 실제로 도움이 될 때만 사용하고, 공개 전에도 보조 기술에서 의미가 혼동되지 않도록 renderer의 기존 방식을 따르세요.
@@ -218,6 +219,6 @@ npm run validate
 npm run build
 ```
 
-검증기는 섹션 export와 소속 슬라이드의 연결, 필수 필드, notes와 blocks 배열, 중복 ID, 지원되지 않는 block type, image 경로, prompt 문자열과 초기 18개 슬라이드 보존 여부를 검사합니다. 빌드까지 통과한 뒤 개발 서버에서 새 섹션의 첫·중간·마지막 슬라이드, 키보드 이동, URL hash, 개요 썸네일, 발표자 노트, prompt 복사, 이미지 fallback, 인쇄와 브라우저 콘솔을 확인하세요.
+검증기는 섹션 export와 소속 슬라이드의 연결, 필수 필드, notes와 blocks 배열, 중복 ID, 지원되지 않는 block type, image 경로, prompt 문자열, 기존 1–18 객체 불변, 전체 60장, 슬라이드 19 action과 교과 다운로드 자산을 검사합니다. 빌드까지 통과한 뒤 개발 서버에서 새 섹션의 첫·중간·마지막 슬라이드, 키보드 이동, URL hash, 개요 썸네일, 발표자 노트, prompt 복사, 이미지 fallback, 인쇄와 브라우저 콘솔을 확인하세요.
 
 Markdown 개요를 Codex에 맡겨 추가하려면 [CODEX_NEXT_SECTION_PROMPT.md](CODEX_NEXT_SECTION_PROMPT.md)의 템플릿을 사용하세요.

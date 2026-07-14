@@ -1,5 +1,6 @@
 import { createCharacter, createCharacterMessage } from "../components/character.js";
 import { createControls } from "../components/controls.js";
+import { createCurriculumDownloadModal } from "../components/curriculum-download-dialog.js";
 import { createProgress } from "../components/progress.js";
 import { createPromptBlock } from "../components/prompt-block.js";
 import { bindKeyboard } from "./keyboard.js";
@@ -101,7 +102,7 @@ function applyReveal(element, block, context) {
 /**
  * 구조화된 block 객체를 DOM으로 렌더링한다. 콘텐츠 문자열은 textContent만 사용한다.
  * @param {import('./schema.js').SlideBlock} block
- * @param {{revealStep:number,revealAll:boolean,interactive:boolean,onToast:(message:string,tone?:string)=>void}} context
+ * @param {{revealStep:number,revealAll:boolean,interactive:boolean,onToast:(message:string,tone?:string)=>void,onAction?:(action:string)=>void}} context
  * @returns {HTMLElement}
  */
 export function renderBlock(block, context) {
@@ -234,6 +235,17 @@ export function renderBlock(block, context) {
       node = el("section", { className: "block block--character-message" });
       (block.messages ?? []).forEach((message) => node.append(createCharacterMessage(message)));
       break;
+    case "action": {
+      node = el("section", { className: "block block--action" });
+      if (context.interactive) {
+        const button = el("button", { type: "button", className: "slide-action-button", text: block.label });
+        button.addEventListener("click", () => context.onAction?.(block.action));
+        node.append(button);
+      }
+      if (block.description) node.append(el("p", { className: "action-description", text: block.description }));
+      if (!context.interactive && block.printText) node.append(el("p", { className: "action-print-text", text: block.printText }));
+      break;
+    }
     case "spacer":
       node = el("div", { className: `block block--spacer spacer--${safeModifier(block.size, "medium")}`, "aria-hidden": "true" });
       break;
@@ -270,13 +282,14 @@ export function renderSlideElement(slide, options = {}) {
     revealStep: options.revealStep ?? 0,
     revealAll: options.revealAll ?? false,
     onToast: options.onToast ?? (() => {}),
+    onAction: options.onAction ?? (() => {}),
     interactive: options.interactive ?? (!options.previewId && !options.print),
   };
   const titleId = `slide-title-${safeModifier(slide.id)}-${options.previewId ?? (options.print ? "print" : "active")}`;
   const article = el("article", {
     className: `slide slide--${safeModifier(slide.layout)}`,
     "aria-labelledby": titleId,
-    dataset: { slideId: slide.id, layout: slide.layout },
+    dataset: { slideId: slide.id, layout: slide.layout, sectionId: slide.sectionId },
   });
   const headingGroup = el("header", { className: "slide-heading" }, el("h1", { id: titleId, text: slide.title }));
   if (slide.subtitle) headingGroup.append(el("p", { className: "slide-subtitle", text: slide.subtitle }));
@@ -391,7 +404,7 @@ export function createDeckApp(deck) {
   function renderCurrent({ announce = true } = {}) {
     const slide = currentSlide();
     const revealStep = currentReveal();
-    stage.replaceChildren(renderSlideElement(slide, { revealStep, onToast: showToast }));
+    stage.replaceChildren(renderSlideElement(slide, { revealStep, onToast: showToast, onAction: handleSlideAction }));
     progress.update({ sectionTitle: slide.sectionTitle, current: state.index + 1, total: slides.length });
     const maxReveal = getMaxRevealStep(slide.blocks ?? []);
     controls.setBoundaryState(state.index, slides.length);
@@ -482,6 +495,23 @@ export function createDeckApp(deck) {
     modal.mount(frame);
   }
 
+  function openCurriculumDownloads() {
+    closeModal();
+    const modal = createCurriculumDownloadModal({
+      onToast: showToast,
+      onClose: () => {
+        if (state.activeModal === modal) state.activeModal = null;
+      },
+    });
+    state.activeModal = modal;
+    modal.mount(frame);
+    modal.focusSearch();
+  }
+
+  function handleSlideAction(action) {
+    if (action === "open-curriculum-downloads") openCurriculumDownloads();
+  }
+
   function toggleNotes() {
     state.notesOpen = !state.notesOpen;
     if (!state.notesOpen && notesPanel.contains(document.activeElement)) controls.notes.focus();
@@ -502,6 +532,7 @@ export function createDeckApp(deck) {
     previous,
     next,
     overview: openOverview,
+    curriculum: openCurriculumDownloads,
     notes: toggleNotes,
     fullscreen,
     print: printDeck,

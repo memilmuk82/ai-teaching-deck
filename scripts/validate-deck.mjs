@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
+import { createHash } from 'node:crypto';
 import { sections, slides } from '../src/content/index.js';
 import { SUPPORTED_BLOCK_TYPES } from '../src/app/schema.js';
+import { checkCurriculumDownloads } from './check-curriculum-downloads.mjs';
 
 const errors = [];
 const supportedBlockTypes = new Set(SUPPORTED_BLOCK_TYPES);
@@ -11,6 +13,27 @@ const initialSectionSlideIds = Object.freeze({
   intro: ['01', '02', '03', '04'],
   'image-prompt-warmup': ['05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15'],
   'teaching-material-transition': ['16', '17', '18'],
+});
+const expectedSlideCount = 60;
+const initialSlideSignatures = Object.freeze({
+  '01': 'c1e1973c55f5ea2505492e9e483d68c187b64571ab57b28699f7e78de3699165',
+  '02': 'bf502da8212e80ef7fa66373746b84302c96450dbd33d60f6056ed47abd1bb73',
+  '03': '469ac99464c8b5f7a607ad499264ec7d354df099d093e6ab1e71e25d5c18054b',
+  '04': '56cbf8e8235eacb8698ac4420d23c41ceaf2bd127ddf1023e799d76243b8d256',
+  '05': '64346516d76c31bd5a63ea21949d7ad27d80eb91f8f797d5aefa89357266bcb3',
+  '06': 'a8ff3972d45970d8a30f276ce8d8ecbbc10cdd7200bb63aa717cdbace88310f3',
+  '07': '0c13c40fd52dd5cd4e7b78d4ba3513ab88eb99e6c7fc179e60a883e4c5ca9048',
+  '08': 'e3dfe5fb9eb035d880ef034e64b8b77d11738069dddaf51c35a2452b2f2bedc1',
+  '09': '38590bde44d2ec6118faa7e47f028ed52fae01a5a4676fd874ba72d111b436b7',
+  '10': '23f7cefa74cad67b8b791d8fa8f4c2e1a63c5707b3e2beffbaa9f2f6fce735a6',
+  '11': 'bd3925362aca8c5747c7b3169d75b6bffd00841bcdcedcb22184d01a31e9cfb8',
+  '12': '196430fdfb94b6350ff6f4b2e3a98402a6d036b295e81f834d7e60762f972b4b',
+  '13': 'ba3f0e10dc6fb5e91e2d525dc7c1e16b68cb423a5e2d5d58af50c0437df35ab2',
+  '14': '9df07ccd0a0d41f497ed0d68312b1529c91ff567cada298198a8c3b3b0a1a7ce',
+  '15': '3f835901c1d82922c801b4c01a447030af3740119b73973ff2e0b83b9ee44437',
+  '16': '135d1c8b37d48ade6a0c5af6a5b0b2e773b204d9e8073218f35b03afa4f499e8',
+  '17': 'c44cd57fbe18911cc334a7d7a97b454113c0a2cbedbf31c3ffcd643b5aef3956',
+  '18': 'b8722bd1f8b03f54f8c4363e01ca5625feae43bce1db992a7a070c2099744257',
 });
 
 function addError(location, message) {
@@ -121,8 +144,8 @@ function validateTable(block, location) {
     }
 
     row.forEach((cell, cellIndex) => {
-      if (!isNonEmptyString(cell)) {
-        addError(`${location}.rows[${rowIndex}][${cellIndex}]`, '표 셀은 비어 있지 않은 문자열이어야 합니다.');
+      if (typeof cell !== 'string') {
+        addError(`${location}.rows[${rowIndex}][${cellIndex}]`, '표 셀은 문자열이어야 합니다.');
       }
     });
   });
@@ -243,6 +266,12 @@ function validateBlock(block, location) {
       validateCharacterMessages(block, location);
       break;
 
+    case 'action':
+      if (!isNonEmptyString(block.action) || !isNonEmptyString(block.label)) {
+        addError(location, 'action 블록에는 action과 label 문자열이 필요합니다.');
+      }
+      break;
+
     case 'spacer':
       if (!['small', 'medium', 'large'].includes(block.size)) {
         addError(location, 'spacer.size는 small, medium, large 중 하나여야 합니다.');
@@ -316,6 +345,12 @@ function validateInitialSlides(slideIds) {
     if (!slideIds.has(id)) {
       addError('initial slides', `초기 슬라이드 ${id}가 없습니다.`);
     }
+  });
+  Object.entries(initialSlideSignatures).forEach(([id, expected]) => {
+    const slide = slides.find((candidate) => candidate?.id === id);
+    if (!slide) return;
+    const actual = createHash('sha256').update(JSON.stringify(slide)).digest('hex');
+    if (actual !== expected) addError(`initial slide ${id}`, '기존 슬라이드 콘텐츠 또는 설정이 변경되었습니다.');
   });
 }
 
@@ -407,7 +442,7 @@ function validateSections() {
   }
 }
 
-function runValidation() {
+async function runValidation() {
   validateSections();
 
   if (!Array.isArray(slides)) {
@@ -431,7 +466,20 @@ function runValidation() {
     });
 
     validateInitialSlides(seenIds);
+    if (slides.length !== expectedSlideCount) {
+      addError('deck', `전체 슬라이드 수는 정확히 ${expectedSlideCount}장이어야 합니다. 현재 ${slides.length}장입니다.`);
+    }
+    ['19', '60'].forEach((id) => {
+      if (!seenIds.has(id)) addError('required slides', `필수 슬라이드 ${id}가 없습니다.`);
+    });
+    const slide19 = slides.find((slide) => slide?.id === '19');
+    if (!slide19?.blocks?.some((block) => block?.type === 'action' && block.action === 'open-curriculum-downloads')) {
+      addError('slide 19', '교과 다운로드 패널을 여는 open-curriculum-downloads action이 필요합니다.');
+    }
   }
+
+  const downloadErrors = await checkCurriculumDownloads();
+  downloadErrors.forEach((error) => addError('curriculum downloads', error));
 
   if (errors.length > 0) {
     console.error(`Deck validation failed with ${errors.length} error(s):`);
@@ -441,8 +489,8 @@ function runValidation() {
   }
 
   console.log(
-    `Deck validation passed: ${sections.length} section(s), ${slides.length} slide(s), initial slides 01–18 present, ${SUPPORTED_BLOCK_TYPES.length} supported block type(s).`,
+    `Deck validation passed: ${sections.length} section(s), ${slides.length} slide(s), initial slides 01–18 unchanged, curriculum downloads present, ${SUPPORTED_BLOCK_TYPES.length} supported block type(s).`,
   );
 }
 
-runValidation();
+await runValidation();

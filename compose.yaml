@@ -1,0 +1,16 @@
+services:
+  deck:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ai-teaching-deck:local
+    container_name: ai-teaching-deck
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:80"
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx:size=16m,mode=0755
+      - /var/run:size=1m,mode=0755
+    security_opt:
+      - no-new-privileges:true

@@ -6,7 +6,7 @@
  * 저장하며, 렌더러는 문자열을 DOM의 `textContent`로 출력해야 한다.
  */
 
-/** @typedef {'paragraph'|'headline'|'bullets'|'numbered-list'|'quote'|'callout'|'columns'|'comparison'|'table'|'process'|'checklist'|'prompt'|'code'|'image'|'image-comparison'|'character-message'|'spacer'} BlockType */
+/** @typedef {'paragraph'|'headline'|'bullets'|'numbered-list'|'quote'|'callout'|'columns'|'comparison'|'table'|'process'|'checklist'|'prompt'|'code'|'image'|'image-comparison'|'character-message'|'action'|'spacer'} BlockType */
 
 /** @typedef {'teacher'|'ai-helper'|'reviewer'|'student'} CharacterRole */
 /** @typedef {'left'|'right'|'center'} CharacterPosition */
@@ -61,7 +61,8 @@
  *   type: 'table',
  *   headers: string[],
  *   rows: string[][],
- *   caption?: string
+ *   caption?: string,
+ *   allowEmptyCells?: boolean
  * }} TableBlock
  */
 
@@ -135,13 +136,23 @@
 
 /**
  * @typedef {CommonBlock & {
+ *   type: 'action',
+ *   action: string,
+ *   label: string,
+ *   description?: string,
+ *   printText?: string
+ * }} ActionBlock
+ */
+
+/**
+ * @typedef {CommonBlock & {
  *   type: 'spacer',
  *   size: 'small'|'medium'|'large'
  * }} SpacerBlock
  */
 
 /**
- * @typedef {TextBlock|ListBlock|ColumnsBlock|ComparisonBlock|TableBlock|ProcessBlock|PromptBlock|CodeBlock|ImageBlock|ImageComparisonBlock|CharacterMessageBlock|SpacerBlock} Block
+ * @typedef {TextBlock|ListBlock|ColumnsBlock|ComparisonBlock|TableBlock|ProcessBlock|PromptBlock|CodeBlock|ImageBlock|ImageComparisonBlock|CharacterMessageBlock|ActionBlock|SpacerBlock} Block
  */
 
 /** @typedef {Block} SlideBlock 하위 호환용 블록 별칭 */
@@ -202,6 +213,7 @@ export const SUPPORTED_BLOCK_TYPES = Object.freeze([
   'image',
   'image-comparison',
   'character-message',
+  'action',
   'spacer',
 ]);
 
