@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="art-bg" x1="84" y1="80" x2="1507" y2="835" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#182A36"/>
+      <stop offset="1" stop-color="#28454C"/>
+    </linearGradient>
+    <linearGradient id="art-glow" x1="1112" y1="218" x2="1112" y2="663" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF4B4"/>
+      <stop offset="1" stop-color="#C5C875"/>
+    </linearGradient>
+    <filter id="art-soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="28"/>
+    </filter>
+    <pattern id="art-grain" width="54" height="54" patternUnits="userSpaceOnUse">
+      <circle cx="8" cy="12" r="2" fill="#fff" opacity=".035"/>
+      <circle cx="37" cy="31" r="1.5" fill="#fff" opacity=".03"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" rx="40" fill="url(#art-bg)"/>
+  <circle cx="1226" cy="354" r="254" fill="#E9E185" opacity=".16" filter="url(#art-soft)"/>
+  <path fill="#101B24" d="M0 668 311 588l181 48 239-86 218 83 237-78 414 103v242H0V668Z" opacity=".9"/>
+  <path fill="#30484D" d="M850 222h621v455H850z"/>
+  <path fill="url(#art-glow)" d="M894 264h532v346H894z"/>
+  <path fill="#25383B" d="M1070 264h22v346h-22zM1258 264h22v346h-22z"/>
+  <path fill="#334A4B" d="m824 630 674-1-59 91H762l62-90Z"/>
+  <path fill="#192C35" d="M790 203h713v61H790z"/>
+  <path d="M939 481h420" stroke="#536E63" stroke-width="20" stroke-linecap="round" opacity=".7"/>
+  <g fill="#40524A">
+    <circle cx="1031" cy="429" r="40"/>
+    <path d="M976 530c8-65 27-95 55-95s48 30 56 95H976Z"/>
+    <circle cx="1201" cy="430" r="40"/>
+    <path d="M1146 530c8-65 27-95 55-95s48 30 56 95h-111Z"/>
+  </g>
+  <path d="M129 155h431M129 210h302" stroke="#7E9BA2" stroke-width="16" stroke-linecap="round" opacity=".2"/>
+  <rect width="1600" height="900" rx="40" fill="url(#art-grain)"/>
+  <rect x="20" y="20" width="1560" height="860" rx="28" fill="none" stroke="#A8C3C8" stroke-opacity=".18" stroke-width="4"/>
+</svg>

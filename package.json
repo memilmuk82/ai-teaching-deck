@@ -1,0 +1,22 @@
+{
+  "name": "ai-prompt-training-deck",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "중학교 교사 연수용 인터랙티브 AI 프롬프트 웹 프레젠테이션",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "validate": "node scripts/validate-deck.mjs",
+    "new:section": "node scripts/create-section.mjs"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.18",
+    "tailwindcss": "^4.1.18",
+    "vite": "^7.3.1"
+  },
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  }
+}

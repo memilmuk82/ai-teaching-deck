@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="transformed-bg" x1="92" y1="80" x2="1511" y2="830" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#102D36"/>
+      <stop offset="1" stop-color="#204D50"/>
+    </linearGradient>
+    <linearGradient id="transformed-light" x1="1052" y1="152" x2="1052" y2="604" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5EDA3"/>
+      <stop offset="1" stop-color="#98AD69"/>
+    </linearGradient>
+    <filter id="transformed-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="34"/>
+    </filter>
+    <filter id="transformed-shadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="20" stdDeviation="20" flood-color="#06161B" flood-opacity=".4"/>
+    </filter>
+    <pattern id="transformed-grain" width="58" height="58" patternUnits="userSpaceOnUse">
+      <circle cx="11" cy="17" r="2" fill="#fff" opacity=".025"/>
+      <circle cx="42" cy="38" r="1.5" fill="#fff" opacity=".03"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" rx="40" fill="url(#transformed-bg)"/>
+  <rect x="935" y="123" width="424" height="493" rx="18" fill="#D7E590" opacity=".18" filter="url(#transformed-glow)"/>
+  <path fill="#173A41" d="M86 106h1428v618H86z"/>
+  <path fill="#0E252D" d="M145 178h557v433H145z"/>
+  <g fill="#28565A">
+    <path d="M173 213h235v69H173zM173 315h235v69H173zM173 417h235v69H173zM173 519h235v69H173z"/>
+    <path d="M439 213h235v69H439zM439 315h235v69H439zM439 417h235v69H439zM439 519h235v69H439z"/>
+  </g>
+  <path fill="url(#transformed-light)" d="M912 154h497v451H912z"/>
+  <path d="M1076 154v451M1242 154v451M912 379h497" stroke="#365B54" stroke-width="18"/>
+  <path fill="#243D38" d="m912 443 117-78 91 58 84-46 205 109v119H912V443Z" opacity=".7"/>
+  <path fill="#17383D" d="M86 724h1428v92H86z"/>
+  <g filter="url(#transformed-shadow)">
+    <path fill="#48614C" d="M738 602h282l101 179H642l96-179Z"/>
+    <path fill="#758467" d="M720 584h319v54H720z"/>
+    <path d="M687 779v-98M1074 779v-98" stroke="#243A36" stroke-width="25" stroke-linecap="round"/>
+    <path fill="#3F5B55" d="M812 471c0-46 36-82 82-82s82 36 82 82v108H812V471Z"/>
+    <circle cx="894" cy="375" r="58" fill="#A98B70"/>
+    <path fill="#253336" d="M836 362c2-46 24-72 59-72 39 0 62 29 63 80-21-5-41-20-55-40-17 18-39 28-67 32Z"/>
+  </g>
+  <path d="M142 682h412" stroke="#8EAAA4" stroke-width="12" stroke-linecap="round" opacity=".15"/>
+  <rect width="1600" height="900" rx="40" fill="url(#transformed-grain)"/>
+  <rect x="20" y="20" width="1560" height="860" rx="28" fill="none" stroke="#9BB9B3" stroke-opacity=".18" stroke-width="4"/>
+</svg>

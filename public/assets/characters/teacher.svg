@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 520" role="img" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="teacher-bg" x1="72" y1="62" x2="345" y2="452" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E8F0FE"/>
+      <stop offset="1" stop-color="#F8F9FA"/>
+    </linearGradient>
+    <linearGradient id="teacher-jacket" x1="135" y1="291" x2="285" y2="486" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5B8DEF"/>
+      <stop offset="1" stop-color="#3267C8"/>
+    </linearGradient>
+    <filter id="teacher-shadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#202124" flood-opacity=".14"/>
+    </filter>
+  </defs>
+  <path fill="url(#teacher-bg)" d="M56 184C70 90 160 38 249 57c91 20 138 112 112 203-18 66-5 123-51 171-52 55-154 63-216 17-66-49-79-143-38-264Z"/>
+  <g opacity=".9">
+    <rect x="56" y="104" width="150" height="116" rx="22" fill="#fff" stroke="#C7D6F3" stroke-width="8"/>
+    <circle cx="91" cy="140" r="12" fill="#4285F4"/>
+    <circle cx="128" cy="140" r="12" fill="#34A853"/>
+    <circle cx="165" cy="140" r="12" fill="#FBBC05"/>
+    <rect x="82" y="173" width="98" height="12" rx="6" fill="#D8E2F3"/>
+  </g>
+  <g filter="url(#teacher-shadow)">
+    <path fill="#27354A" d="M129 213c0-65 34-108 85-108 53 0 88 43 88 109v47H129v-48Z"/>
+    <ellipse cx="215" cy="214" rx="75" ry="87" fill="#F4C7A1"/>
+    <path fill="#27354A" d="M142 194c2-56 31-91 75-91 46 0 77 38 79 97-26-6-50-22-68-46-19 23-48 39-86 40Z"/>
+    <path fill="#202124" d="M162 195c11-3 21-1 29 6l-5 8c-7-4-14-5-22-2l-2-12Zm105 0c-11-3-21-1-29 6l5 8c7-4 14-5 22-2l2-12Z"/>
+    <ellipse cx="179" cy="218" rx="7" ry="9" fill="#202124"/>
+    <ellipse cx="251" cy="218" rx="7" ry="9" fill="#202124"/>
+    <circle cx="181" cy="215" r="2" fill="#fff"/>
+    <circle cx="253" cy="215" r="2" fill="#fff"/>
+    <path d="M192 253c14 13 33 13 47 0" fill="none" stroke="#8F4B4F" stroke-width="7" stroke-linecap="round"/>
+    <path fill="url(#teacher-jacket)" d="M116 466c2-106 39-168 99-168 61 0 98 62 100 168H116Z"/>
+    <path fill="#fff" d="m180 303 35 44 35-44 19 163H161l19-163Z"/>
+    <path fill="#E8F0FE" d="m180 303 35 44-28 25-25-55 18-14Zm70 0-35 44 28 25 25-55-18-14Z"/>
+    <path d="M135 374c-26 8-42 25-50 53" fill="none" stroke="#4B7DD4" stroke-width="34" stroke-linecap="round"/>
+    <circle cx="79" cy="437" r="19" fill="#F4C7A1"/>
+    <path d="m78 430 57-131" fill="none" stroke="#5F6368" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="137" cy="295" r="12" fill="#EA4335"/>
+  </g>
+</svg>
