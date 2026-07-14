@@ -24,6 +24,19 @@ public/assets/images/transformed-photo-placeholder.svg
 
 placeholder 카드의 설명 문구는 SVG 내부 문자가 아니라 슬라이드의 HTML overlay입니다. 따라서 SVG를 교체하더라도 화면 문자는 선택·복사 가능하고, 실제 이미지가 없는 상태에서도 접근성 정보가 유지됩니다.
 
+## 현재 포함된 관찰 작품
+
+`public/assets/images/artwork-reference.webp`에는 다음 작품의 디지털 복제본이 포함되어 있습니다.
+
+- 작품: Edward Hopper, *Nighthawks* (1942)
+- 소장처: Art Institute of Chicago
+- 원본 파일 설명: [Wikimedia Commons — Nighthawks by Edward Hopper 1942.jpg](https://commons.wikimedia.org/wiki/File:Nighthawks_by_Edward_Hopper_1942.jpg)
+- 사용한 파일: Wikimedia Commons의 3840×2095px 썸네일
+- 웹 자산: 2400×1309px WebP, 품질 86
+- Commons 표시 권리: 미국 내 퍼블릭 도메인, PD-Art
+
+Wikimedia Commons는 미국 외 관할권에서는 재사용 조건이 달라질 수 있다고 안내합니다. 공개 배포 범위가 달라지면 운영 기관에서 해당 지역의 권리 조건을 다시 확인하세요. 슬라이드 15 이전에는 작품명과 작가명을 공개하지 않는 수업 흐름을 유지하기 위해, 이미지의 `alt` 텍스트에도 작품명을 넣지 않습니다.
+
 ## alt 텍스트 수정 위치
 
 이미지를 교체했다면 `src/content/sections/02-image-prompt-warmup.js`에서 해당 `image` 또는 `image-comparison` 블록의 `alt` 값을 실제 이미지 내용에 맞게 수정합니다. 새 섹션의 이미지는 그 섹션 파일 안에서 alt 텍스트를 관리합니다.
