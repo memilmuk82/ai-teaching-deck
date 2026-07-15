@@ -157,6 +157,8 @@ public/assets/images/transformed-photo.webp
 
 파일명, 비율, 권장 해상도, alt 텍스트 위치와 캐릭터 SVG 교체 방법은 [자산 안내](docs/ASSET_GUIDE.md)를 참고하세요. 외부 웹의 작품이나 사진을 자동으로 내려받지 않으며, 사용 권한을 확인한 파일만 추가해야 합니다.
 
+Docker/Nginx 환경에서는 `source-photo.webp`와 `transformed-photo.webp`가 아직 없을 때 같은 구도의 SVG placeholder를 HTTP 200으로 제공합니다. 실제 WebP를 위 경로에 추가하면 Nginx가 실제 파일을 우선하므로 콘텐츠 코드 수정 없이 교체됩니다.
+
 ## 검증과 빌드
 
 콘텐츠 스키마, 섹션과 슬라이드의 연결, 정확히 60장인지, 중복 ID, 지원하지 않는 block type, 프롬프트 문자열, 기존 1–18 객체 불변, 슬라이드 19 action과 공개 교과 파일의 경로·중복·SHA-256을 검사합니다.
