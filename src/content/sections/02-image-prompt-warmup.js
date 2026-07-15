@@ -212,68 +212,68 @@ export const slides = [
                 type: 'columns',
                 columns: [
                   {
-                    title: 'Color',
+                    title: '색',
                     blocks: [
                       {
                         type: 'bullets',
                         items: [
-                          'deep blue-green exterior',
-                          'warm yellow-green interior light',
-                          'muted brown and red accents',
+                          '짙은 청록색 외부',
+                          '따뜻한 황록색 실내조명',
+                          '채도를 낮춘 갈색과 붉은색 포인트',
                         ],
                       },
                     ],
                   },
                   {
-                    title: 'Lighting',
+                    title: '빛',
                     blocks: [
                       {
                         type: 'bullets',
                         items: [
-                          'strong contrast between inside and outside',
-                          'a single dominant interior light source',
-                          'large dark areas surrounding the subjects',
+                          '실내와 실외의 강한 명암 대비',
+                          '하나의 주된 실내 광원',
+                          '인물을 둘러싼 넓고 어두운 영역',
                         ],
                       },
                     ],
                   },
                   {
-                    title: 'Composition',
+                    title: '공간',
                     blocks: [
                       {
                         type: 'bullets',
                         items: [
-                          'clean geometric architecture',
-                          'large glass surfaces',
-                          'sparse objects',
-                          'subjects grouped inside an enclosed space',
+                          '직선 중심의 기하학적 건축 구조',
+                          '넓은 유리면',
+                          '소품이 적은 공간',
+                          '닫힌 공간 안에 모여 있는 인물',
                         ],
                       },
                     ],
                   },
                   {
-                    title: 'People',
+                    title: '인물 관계',
                     blocks: [
                       {
                         type: 'bullets',
                         items: [
-                          'restrained poses',
-                          'limited eye contact',
-                          'emotional distance despite physical closeness',
+                          '절제된 자세',
+                          '제한된 시선 교환',
+                          '물리적으로 가깝지만 느껴지는 정서적 거리',
                         ],
                       },
                     ],
                   },
                   {
-                    title: 'Mood',
+                    title: '분위기',
                     blocks: [
                       {
                         type: 'bullets',
                         items: [
-                          'quiet',
-                          'cinematic',
-                          'still',
-                          'slightly isolated',
+                          '조용함',
+                          '영화 같은 분위기',
+                          '정지된 느낌',
+                          '약간의 고립감',
                         ],
                       },
                     ],
@@ -286,7 +286,7 @@ export const slides = [
       },
     ],
     notes: [
-      '프롬프트를 바로 쓰는 것이 아니라 특징을 먼저 구조화한다.',
+      '관찰한 특징을 한국어로 먼저 구조화하고, 다음 슬라이드에서 AI가 이를 영어 이미지 프롬프트로 바꾸게 한다.',
     ],
   },
   {
