@@ -288,14 +288,26 @@ export function renderSlideElement(slide, options = {}) {
   const titleId = `slide-title-${safeModifier(slide.id)}-${options.previewId ?? (options.print ? "print" : "active")}`;
   const extendedClass = Number.parseInt(slide.id, 10) >= 19 ? " slide--extended" : "";
   const article = el("article", {
-    className: `slide slide--${safeModifier(slide.layout)}${extendedClass}`,
+    className: `slide slide--${safeModifier(slide.layout)}${extendedClass}${slide.toolContext ? " slide--has-tool-context" : ""}`,
     "aria-labelledby": titleId,
     dataset: { slideId: slide.id, layout: slide.layout, sectionId: slide.sectionId },
   });
+  const toolContext = slide.toolContext
+    ? el(
+      "div",
+      {
+        className: `slide-tool-context tool-context--${safeModifier(slide.toolContext.kind)}`,
+        "aria-label": `이 슬라이드의 실행 위치: ${slide.toolContext.label}${slide.toolContext.detail ? `, ${slide.toolContext.detail}` : ""}`,
+      },
+      el("strong", { text: slide.toolContext.label }),
+      slide.toolContext.detail ? el("span", { text: slide.toolContext.detail }) : null,
+    )
+    : null;
   const headingGroup = el("header", { className: "slide-heading" }, el("h1", { id: titleId, text: slide.title }));
   if (slide.subtitle) headingGroup.append(el("p", { className: "slide-subtitle", text: slide.subtitle }));
   const body = el("div", { className: "slide-body" });
   (slide.blocks ?? []).forEach((block) => body.append(renderBlock(block, context)));
+  if (toolContext) article.append(toolContext);
   article.append(headingGroup, body);
 
   const messageRoles = new Set(

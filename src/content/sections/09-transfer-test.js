@@ -2,6 +2,7 @@
 export const slides = [
   {
     id: '37', sectionId: 'transfer-test', sectionTitle: '다른 단원 전이 시험', title: '같은 규칙으로 다른 단원을 시험합니다', layout: 'process', durationSeconds: 120,
+    toolContext: { kind: 'classic-gem', label: '완성한 클래식 Gem', detail: '시험 B 준비' },
     blocks: [
       { type: 'process', items: ['시험 A 보존', '단원·자료 유형 변경', '시험 B 실행', '두 결과 비교'] },
       { type: 'comparison', left: { title: '고정', blocks: [{ type: 'paragraph', text: '학생 수준 · 선호/회피 활동 · 수준별 지원 · 출력 형식 · 검토 기준' }] }, right: { title: '변경', blocks: [{ type: 'paragraph', text: '학년 · 단원 또는 주제 · 자료 유형 · 활용 시간 · 참고 자료 · 특별 조건\n전이 목적에 따라 학년과 활용 시간은 유지할 수도 있습니다.' }] } },
@@ -11,6 +12,7 @@ export const slides = [
   },
   {
     id: '38', sectionId: 'transfer-test', sectionTitle: '다른 단원 전이 시험', title: '교과마다 시험 A와 B를 충분히 다르게 잡습니다', layout: 'table', durationSeconds: 180,
+    toolContext: { kind: 'classic-gem', label: '완성한 클래식 Gem', detail: '시험 B 입력 선택' },
     blocks: [
       { type: 'table', headers: ['교과', '시험 A', '시험 B'], rows: [['정보', '함수 안 반복문 디버깅 활동지 [9정03-07]', '개인정보 보호 사례 판단 활동지 [9정05-03]'], ['국어', '주장과 근거 활동지 [9국03-03]', '작품 해석 활동지 [9국05-08]'], ['과학', '개념 분류 활동지 [9과08-02]', '실험 결과 해석 활동지 [9과06-02]'], ['사회', '사례 판단 활동지 [9사(일사)08-01]', '통계·자료 해석 활동지 [9사(지리)12-01]']] },
       { type: 'headline', text: '성취기준과 활동 구조는 바뀌어도,\n교사의 기본 원칙과 출력 형식은 유지되어야 합니다.', tone: 'green' },
@@ -19,6 +21,7 @@ export const slides = [
   },
   {
     id: '39', sectionId: 'transfer-test', sectionTitle: '다른 단원 전이 시험', title: '시험 B에서는 달라질 것과 유지될 것을 함께 봅니다', layout: 'comparison', durationSeconds: 300,
+    toolContext: { kind: 'classic-gem', label: '완성한 클래식 Gem', detail: '시험 B 실행·검토' },
     character: { role: 'reviewer', position: 'center' },
     blocks: [
       { type: 'comparison', left: { title: '달라져야 할 것', blocks: [{ type: 'checklist', items: ['두 번째 단원에 맞는 성취기준', '첫 단원 내용을 가져오지 않은 활동', '새 자료 유형에 맞는 활동 구조'] }] }, right: { title: '유지되어야 할 것', blocks: [{ type: 'checklist', items: ['교사의 기본 학생 수준', '선호·회피 활동 원칙', '수준별 지원', '학생용·교사용 분리', '출력 순서와 표시 규칙'] }] } },

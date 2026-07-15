@@ -354,6 +354,66 @@ button:disabled {
   margin-bottom: 26px;
 }
 
+.slide-tool-context {
+  position: absolute;
+  z-index: 4;
+  top: 34px;
+  right: 64px;
+  display: flex;
+  max-width: 430px;
+  min-height: 48px;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border: 2px solid #9aa0a6;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 96%);
+  box-shadow: 0 5px 16px rgb(60 64 67 / 12%);
+  color: #3c4043;
+  font-size: 17px;
+  line-height: 1.15;
+}
+
+.slide-tool-context strong {
+  flex: 0 0 auto;
+  font-size: 18px;
+  font-weight: 820;
+}
+
+.slide-tool-context span {
+  padding-left: 10px;
+  border-left: 1px solid currentcolor;
+  opacity: 0.78;
+}
+
+.tool-context--gemini {
+  border-color: var(--blue);
+  background: var(--blue-soft);
+  color: var(--blue-dark);
+}
+
+.tool-context--classic-gem {
+  border-color: var(--green);
+  background: var(--green-soft);
+  color: #155b39;
+}
+
+.tool-context--offline {
+  border-color: #9aa0a6;
+  background: #f1f3f4;
+  color: #3c4043;
+}
+
+.tool-context--transition {
+  border-color: var(--yellow-dark);
+  background: var(--yellow-soft);
+  color: #664d03;
+}
+
+.slide--has-tool-context .slide-heading h1 {
+  max-width: 1040px;
+}
+
 .slide-heading h1 {
   max-width: 1380px;
   margin: 0;
@@ -2267,6 +2327,494 @@ button:disabled {
 
 .slide[data-slide-id="41"] .table-wrap tbody th {
   width: 31%;
+}
+
+/* 슬라이드 23–26: 화면만 읽어도 수행 순서가 보이는 참여형 실습 흐름 */
+.slide:is([data-slide-id="23"], [data-slide-id="24"], [data-slide-id="25"], [data-slide-id="26"]) .slide-heading {
+  margin-bottom: 12px;
+}
+
+.slide:is([data-slide-id="23"], [data-slide-id="24"], [data-slide-id="25"], [data-slide-id="26"]) .slide-body {
+  gap: 8px;
+}
+
+.slide:is([data-slide-id="23"], [data-slide-id="24"], [data-slide-id="25"], [data-slide-id="26"]) .slide-body > .block--callout:first-child {
+  min-height: 58px;
+  padding: 9px 16px;
+}
+
+.slide:is([data-slide-id="23"], [data-slide-id="24"], [data-slide-id="25"], [data-slide-id="26"]) .slide-body > .block--callout:first-child p {
+  font-size: 21px;
+}
+
+.slide:is([data-slide-id="23"], [data-slide-id="24"], [data-slide-id="25"], [data-slide-id="26"]) .slide-body > .block--callout:first-child .callout-label {
+  font-size: 16px;
+}
+
+.slide[data-slide-id="23"] .slide-body {
+  display: flex;
+  height: 100%;
+  padding-right: 0;
+  flex-direction: column;
+}
+
+.slide[data-slide-id="23"] .block--columns {
+  min-height: 0;
+  flex: 1 1 auto;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 14px;
+}
+
+.slide[data-slide-id="23"] .column-panel {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  justify-content: center;
+  padding: 11px 18px;
+  border-top-width: 5px;
+}
+
+.slide[data-slide-id="23"] .column-panel h3 {
+  margin: 0 0 7px;
+  font-size: 24px;
+}
+
+.slide[data-slide-id="23"] .column-panel :is(.block--paragraph, .block--bullets) {
+  font-size: 19px;
+  line-height: 1.25;
+}
+
+.slide[data-slide-id="23"] .column-panel .block--bullets li + li {
+  margin-top: 3px;
+}
+
+.slide[data-slide-id="23"] .table-wrap {
+  height: 102px;
+  flex: 0 0 102px;
+}
+
+.slide[data-slide-id="23"] .table-wrap table {
+  height: auto;
+}
+
+.slide[data-slide-id="23"] .table-wrap caption {
+  padding: 4px 10px;
+  font-size: 16px;
+}
+
+.slide[data-slide-id="23"] .table-wrap :is(th, td) {
+  padding: 5px 10px;
+  font-size: 17px;
+  text-align: center;
+}
+
+.slide[data-slide-id="23"] .table-wrap tbody tr {
+  height: 35px;
+}
+
+.slide[data-slide-id="23"] .block--headline {
+  margin-top: 0;
+  padding: 3px 0 3px 14px;
+  font-size: 23px;
+}
+
+.slide[data-slide-id="23"] .block--process li {
+  min-height: 48px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.slide[data-slide-id="23"] .process-text {
+  font-size: 18px;
+}
+
+.slide[data-slide-id="23"] .block--callout:last-child {
+  min-height: 58px;
+  padding: 8px 16px;
+}
+
+.slide[data-slide-id="23"] .block--callout:last-child p {
+  font-size: 19px;
+}
+
+.slide[data-slide-id="24"] .slide-body {
+  display: grid;
+  height: 100%;
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+  grid-template-rows: auto auto minmax(230px, 1fr) auto auto;
+  align-content: stretch;
+}
+
+.slide[data-slide-id="24"] .slide-body > :is(.block--callout:first-child, .block--comparison, .block--table, .block--columns) {
+  grid-column: 1 / -1;
+}
+
+.slide[data-slide-id="24"] .block--comparison {
+  gap: 14px;
+}
+
+.slide[data-slide-id="24"] .comparison-panel {
+  min-height: 0;
+  padding: 8px 15px;
+  border-top-width: 5px;
+}
+
+.slide[data-slide-id="24"] .comparison-panel h3 {
+  margin: 0 0 3px;
+  font-size: 21px;
+}
+
+.slide[data-slide-id="24"] .comparison-panel .block--paragraph {
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+.slide[data-slide-id="24"] .block--table {
+  min-height: 0;
+  height: 100%;
+}
+
+.slide[data-slide-id="24"] .block--table table {
+  height: calc(100% - 32px);
+}
+
+.slide[data-slide-id="24"] .table-wrap caption {
+  padding: 5px 11px;
+  font-size: 16px;
+}
+
+.slide[data-slide-id="24"] .table-wrap :is(th, td) {
+  padding: 5px 11px;
+  font-size: 18px;
+}
+
+.slide[data-slide-id="24"] .table-wrap thead th {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  font-size: 19px;
+}
+
+.slide[data-slide-id="24"] .table-wrap :is(thead th:first-child, tbody th) {
+  width: 60%;
+}
+
+.slide[data-slide-id="24"] .table-wrap :is(th, td):not(:first-child) {
+  text-align: center;
+}
+
+.slide[data-slide-id="24"] .block--columns {
+  gap: 12px;
+}
+
+.slide[data-slide-id="24"] .column-panel {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px 13px;
+  border-top-width: 4px;
+}
+
+.slide[data-slide-id="24"] .column-panel .panel-label {
+  font-size: 13px;
+}
+
+.slide[data-slide-id="24"] .column-panel h3 {
+  margin: 2px 0 4px;
+  font-size: 19px;
+}
+
+.slide[data-slide-id="24"] .column-panel .block--paragraph {
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.slide[data-slide-id="24"] .block--headline {
+  width: 100%;
+  height: 100%;
+  align-content: center;
+  padding: 3px 0 3px 14px;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+.slide[data-slide-id="24"] .block--callout:last-child {
+  min-height: 54px;
+  height: 100%;
+  padding: 7px 14px;
+}
+
+.slide[data-slide-id="24"] .block--callout:last-child p {
+  font-size: 18px;
+}
+
+.slide[data-slide-id="25"] .comparison-panel {
+  min-height: 0;
+}
+
+.slide[data-slide-id="25"] .slide-body > .block--headline {
+  margin-top: 0;
+}
+
+.slide[data-slide-id="25"] .block--callout:not(:first-child) {
+  min-height: 62px;
+  padding: 9px 16px;
+}
+
+.slide[data-slide-id="25"] .block--callout:not(:first-child) p {
+  font-size: 21px;
+}
+
+.slide[data-slide-id="26"] .slide-body {
+  display: grid;
+  height: 100%;
+  grid-template-rows: auto minmax(0, 1fr) auto auto auto auto;
+  align-content: stretch;
+}
+
+.slide[data-slide-id="26"] .block--comparison {
+  min-height: 0;
+  gap: 18px;
+}
+
+.slide[data-slide-id="26"] .comparison-panel {
+  min-height: 0;
+  padding: 9px 16px;
+  border-top-width: 5px;
+}
+
+.slide[data-slide-id="26"] .comparison-panel h3 {
+  margin: 0 0 4px;
+  font-size: 23px;
+}
+
+.slide[data-slide-id="26"] .comparison-panel .block--paragraph {
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.slide[data-slide-id="26"] .comparison-panel .block--bullets {
+  font-size: 17px;
+  line-height: 1.2;
+}
+
+.slide[data-slide-id="26"] .comparison-panel .block--bullets li + li {
+  margin-top: 2px;
+}
+
+.slide[data-slide-id="26"] .slide-body > .block--headline {
+  margin-top: 0;
+  padding: 3px 0 3px 14px;
+  font-size: 21px;
+}
+
+.slide[data-slide-id="26"] .block--process li {
+  min-height: 48px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.slide[data-slide-id="26"] .process-text {
+  font-size: 18px;
+}
+
+.slide[data-slide-id="26"] .block--columns {
+  gap: 14px;
+}
+
+.slide[data-slide-id="26"] .column-panel {
+  padding: 7px 12px;
+  border-top-width: 4px;
+}
+
+.slide[data-slide-id="26"] .column-panel h3 {
+  margin: 0 0 5px;
+  font-size: 19px;
+}
+
+.slide[data-slide-id="26"] .column-panel .block--callout {
+  min-height: 50px;
+  padding: 7px 11px;
+}
+
+.slide[data-slide-id="26"] .column-panel .block--callout p {
+  font-size: 17px;
+}
+
+.slide[data-slide-id="26"] .slide-body > .block--callout:last-child {
+  min-height: 56px;
+  padding: 8px 15px;
+}
+
+.slide[data-slide-id="26"] .slide-body > .block--callout:last-child p {
+  font-size: 20px;
+}
+
+/* 슬라이드 41: 전문은 유지하고 응답 예시를 읽을 수 있는 폭과 크기로 확장합니다. */
+.slide[data-slide-id="41"] .slide-body {
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 11px 18px;
+  align-content: stretch;
+}
+
+.slide[data-slide-id="41"] .block--prompt {
+  grid-column: 1;
+  grid-row: 1 / -1;
+}
+
+.slide[data-slide-id="41"] .slide-body > :not(.block--prompt) {
+  grid-column: 2;
+}
+
+.slide[data-slide-id="41"] .slide-body > .block--callout {
+  min-height: 68px;
+  gap: 10px;
+  padding: 9px 13px;
+}
+
+.slide[data-slide-id="41"] .slide-body > .block--callout p {
+  font-size: 18px;
+  line-height: 1.28;
+}
+
+.slide[data-slide-id="41"] .slide-body > .block--callout .callout-label {
+  font-size: 15px;
+}
+
+.slide[data-slide-id="41"] .table-wrap {
+  min-height: 0;
+  height: 100%;
+}
+
+.slide[data-slide-id="41"] .table-wrap table {
+  height: auto;
+  table-layout: fixed;
+}
+
+.slide[data-slide-id="41"] .table-wrap caption {
+  padding: 6px 10px;
+  font-size: 17px;
+}
+
+.slide[data-slide-id="41"] .table-wrap :is(th, td) {
+  padding: 7px 9px;
+  font-size: 17px;
+  line-height: 1.22;
+}
+
+.slide[data-slide-id="41"] .table-wrap thead th {
+  font-size: 18px;
+}
+
+.slide[data-slide-id="41"] .table-wrap tbody th {
+  width: 26%;
+}
+
+/* 슬라이드 43: 도구 비교 뒤 오늘의 성과와 핵심 문장으로 연수를 닫습니다. */
+.slide[data-slide-id="43"] .slide-heading {
+  margin-bottom: 11px;
+}
+
+.slide[data-slide-id="43"] .slide-body {
+  display: grid;
+  height: 100%;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: minmax(215px, 1fr) auto auto auto auto;
+  gap: 8px 12px;
+  align-content: stretch;
+}
+
+.slide[data-slide-id="43"] .table-wrap {
+  grid-column: 1 / -1;
+  min-height: 0;
+  height: 100%;
+}
+
+.slide[data-slide-id="43"] .table-wrap table {
+  height: 100%;
+}
+
+.slide[data-slide-id="43"] .table-wrap :is(th, td) {
+  padding: 7px 11px;
+  font-size: 18px;
+  line-height: 1.22;
+}
+
+.slide[data-slide-id="43"] .table-wrap thead th {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-size: 19px;
+}
+
+.slide[data-slide-id="43"] .table-wrap :is(thead th:first-child, tbody th) {
+  width: 20%;
+}
+
+.slide[data-slide-id="43"] .table-wrap :is(thead th:nth-child(2), tbody td:nth-child(2)) {
+  width: 56%;
+}
+
+.slide[data-slide-id="43"] .slide-body > .block--headline:nth-child(2) {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-top: 0;
+  padding: 4px 0 4px 15px;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+.slide[data-slide-id="43"] .slide-body > .block--callout {
+  min-height: 70px;
+  gap: 8px;
+  padding: 8px 12px;
+}
+
+.slide[data-slide-id="43"] .slide-body > .block--callout p {
+  font-size: 17px;
+  line-height: 1.25;
+}
+
+.slide[data-slide-id="43"] .slide-body > .block--callout .callout-label {
+  flex: 0 0 auto;
+  padding: 6px 8px;
+  font-size: 14px;
+}
+
+.slide[data-slide-id="43"] .slide-body > .block--callout:nth-child(3) {
+  grid-column: 1;
+}
+
+.slide[data-slide-id="43"] .slide-body > .block--callout:nth-child(4) {
+  grid-column: 2;
+}
+
+.slide[data-slide-id="43"] .slide-body > .block--callout:nth-child(5) {
+  grid-column: 1 / -1;
+  min-height: 60px;
+}
+
+.slide[data-slide-id="43"] .slide-body > .block--callout:nth-child(5) p {
+  font-size: 18px;
+  font-weight: 690;
+}
+
+.slide[data-slide-id="43"] .slide-body > .block--headline:nth-child(6) {
+  display: grid;
+  grid-column: 1 / -1;
+  width: 100%;
+  min-height: 70px;
+  align-content: center;
+  padding: 9px 22px;
+  margin-top: 0;
+  border: 2px solid var(--green);
+  border-left-width: 10px;
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--green-soft) 75%, white);
+  font-size: 28px;
+  font-weight: 820;
+  line-height: 1.24;
+  text-align: center;
 }
 
 /* 부록: 전문 크기는 유지하고 우측 요약·검토 요소의 가독성을 복원합니다. */

@@ -20,6 +20,7 @@ const testAInput = `# 이번 수업자료
 export const slides = [
   {
     id: '34', sectionId: 'first-generator-test', sectionTitle: '첫 번째 단원 시험', title: '첫 시험은 입력값만 바꾸어 실행합니다', layout: 'prompt', durationSeconds: 120,
+    toolContext: { kind: 'classic-gem', label: '완성한 클래식 Gem', detail: '이번 입력 작성' },
     blocks: [
       { type: 'paragraph', text: 'Gem에 저장한 기본값은 다시 쓰지 않습니다. 이번 자료에서 달라지는 값만 입력합니다.' },
       { type: 'prompt', label: '이번 수업자료 입력 템플릿', text: inputTemplate },
@@ -30,6 +31,7 @@ export const slides = [
   },
   {
     id: '35', sectionId: 'first-generator-test', sectionTitle: '첫 번째 단원 시험', title: '시험 A: 첫 번째 단원에서 생성기를 실행합니다', layout: 'prompt-and-analysis', durationSeconds: 300,
+    toolContext: { kind: 'classic-gem', label: '완성한 클래식 Gem', detail: '시험 A 실행' },
     character: { role: 'student', position: 'right' },
     blocks: [
       { type: 'prompt', label: '시험 A 입력 · 정보과 예시', text: testAInput },
@@ -41,6 +43,7 @@ export const slides = [
   },
   {
     id: '36', sectionId: 'first-generator-test', sectionTitle: '첫 번째 단원 시험', title: '첫 결과는 여덟 가지 기준으로 확인합니다', layout: 'check-table', durationSeconds: 180,
+    toolContext: { kind: 'classic-gem', label: '완성한 클래식 Gem', detail: '시험 A 결과 검토' },
     character: { role: 'reviewer', position: 'right' },
     blocks: [
       { type: 'table', headers: ['검토 항목', '확인 질문'], rows: [['질문 규칙', '성취기준 선택이 끝난 뒤 필수 입력이 있는데 추가 질문 없이 작동했는가?'], ['교육과정', '관련 성취기준의 코드와 원문이 파일에 있는가?'], ['선호 활동', '교사가 선호한 활동이 반영되었는가?'], ['피할 활동', '피하겠다고 한 활동이 제외되었는가?'], ['시간', '활동별 예상 시간의 합이 활용 시간에 맞는가?'], ['출력 분리', '학생용과 교사용 자료가 분리되었는가?'], ['근거 표시', '적용 성취기준이 표시되었는가?'], ['최종 확인', 'AI 제안과 교사 확인 사항이 표시되었는가?']] },

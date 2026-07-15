@@ -30,6 +30,7 @@ export const slides = [
     title: '먼저 내 교과 교육과정 파일을 선택합니다',
     layout: 'process',
     durationSeconds: 120,
+    toolContext: { kind: 'classic-gem', label: '클래식 Gem', detail: '새 Gem 만들기' },
     character: { role: 'ai-helper', position: 'right' },
     blocks: [
       { type: 'paragraph', text: '수업자료 생성기는\n교육과정의 범위와 성취기준을 근거로 작동해야 합니다.\n\n전체 자료를 한꺼번에 넣지 말고\n자신의 교과 Markdown 파일 하나만 선택합니다.' },
@@ -44,6 +45,7 @@ export const slides = [
       { type: 'callout', text: 'Markdown 파일은 수업자료의 범위와 근거를 제공하고,\n교사의 수업 방법은 이후 Gem 지시사항에 따로 설정합니다.', tone: 'blue' },
     ],
     notes: [
+      '19–22번에서는 최종 지시사항을 아직 만들지 않습니다. 클래식 Gem의 껍데기를 만들고 교과 Knowledge 파일 하나를 먼저 연결해 검색 가능 여부만 확인한다고 안내합니다.',
       '압축파일 전체를 Gem에 넣지 않도록 강조한다.',
       '참가자는 자신의 교과 파일 하나만 내려받는다.',
       '교육과정 파일은 무엇을 가르칠지에 대한 근거다.',
@@ -57,6 +59,7 @@ export const slides = [
     title: 'ZIP 전체가 아니라 내 교과 파일 하나만 선택합니다',
     layout: 'comparison',
     durationSeconds: 120,
+    toolContext: { kind: 'classic-gem', label: '클래식 Gem', detail: 'Knowledge 파일 선택' },
     blocks: [
       { type: 'process', items: ['통합 ZIP', '압축 풀기', '교과/', '내 교과.md', 'Gem Knowledge'] },
       {
@@ -78,6 +81,7 @@ export const slides = [
     title: '교과별 Markdown은 검색 범위를 분명하게 만듭니다',
     layout: 'comparison',
     durationSeconds: 180,
+    toolContext: { kind: 'classic-gem', label: '클래식 Gem', detail: 'Knowledge 연결' },
     blocks: [
       {
         type: 'comparison',
@@ -99,6 +103,7 @@ export const slides = [
     title: '먼저 성취기준을 찾는지 확인합니다',
     layout: 'prompt-and-analysis',
     durationSeconds: 180,
+    toolContext: { kind: 'classic-gem', label: '클래식 Gem', detail: 'Knowledge 연결 확인' },
     character: { role: 'reviewer', position: 'right' },
     blocks: [
       { type: 'prompt', label: '복사하여 확인 시험 실행', text: curriculumCheckPrompt },

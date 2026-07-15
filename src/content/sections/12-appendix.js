@@ -535,59 +535,69 @@ Canva에서 직접 편집하기 쉬운 페이지 단위 원고로만 재구성�
 
 /** @type {import('../../app/schema.js').Slide[]} */
 export const slides = [
-  { id: '45', sectionId: 'appendix', sectionTitle: '부록', title: '교육과정 파일 연결 확인 프롬프트 전문', layout: 'prompt', blocks: [{ type: 'paragraph', text: '교과 Markdown 파일 하나를 연결한 뒤 복사합니다.' }, { type: 'prompt', text: curriculumCheckPrompt }, { type: 'callout', text: '이 프롬프트는 연결 확인용입니다. 아직 수업자료를 만들지 않습니다.', tone: 'yellow' }, { type: 'process', items: ['파일 하나 연결', '프롬프트 실행', '후보 대조', '교사 선택'] }], notes: ['후보의 코드와 원문을 반드시 첨부 파일 검색 결과와 대조하게 합니다.'] },
-  { id: '46', sectionId: 'appendix', sectionTitle: '부록', title: '수업자료 생성기 설계 코치 프롬프트 전문', layout: 'prompt', character: { role: 'ai-helper', position: 'right' }, blocks: [{ type: 'paragraph', text: '새 대화에서 실행하고, 질문에는 실제 수업 경험으로 답합니다.' }, { type: 'prompt', text: designCoachPrompt }, { type: 'callout', text: '설계가 끝날 때까지 실제 수업자료를 만들지 않습니다.', tone: 'yellow' }], notes: ['AI 제안과 교사가 실제로 말한 원칙을 구분하는 문구를 삭제하지 않습니다.'] },
-  { id: '47', sectionId: 'appendix', sectionTitle: '부록', title: 'Gem 지시사항 전체 골격', layout: 'prompt', blocks: [{ type: 'paragraph', text: '대괄호 안을 자신의 값으로 바꾸고, 불필요한 예시는 삭제한 뒤 저장합니다.' }, { type: 'prompt', label: '9개 영역 전체 지시사항', copyLabel: '전체 복사', text: gemSkeleton }, { type: 'callout', text: 'AI 제안은 교사가 확인한 뒤에만 고정 기본값으로 바꿉니다.', tone: 'yellow' }], notes: ['성취기준 후보 확인과 교사 선택은 모든 새 단원의 제작 전 점검 단계입니다. 선택 뒤에는 필수 입력이 있으면 질문을 반복하지 않게 합니다.', '한 화면에 전체 전문을 작게 축소하지 않고, 스크롤 가능한 DOM 전문과 전체 복사 기능을 함께 제공합니다.'] },
-  { id: '48', sectionId: 'appendix', sectionTitle: '부록', title: '이번 수업자료 입력 템플릿', layout: 'prompt-and-analysis', blocks: [{ type: 'prompt', text: inputTemplate }, { type: 'comparison', left: { title: '필수', blocks: [{ type: 'paragraph', text: '학년 · 단원 또는 주제 · 자료 유형' }] }, right: { title: '선택', blocks: [{ type: 'paragraph', text: '활용 시간 · 참고 자료 · 특별 조건' }] } }, { type: 'callout', text: '활용 시간과 특별 조건을 비우면 저장된 기본값이 적용됩니다. 참고 자료를 비우면 추가 자료 없이 진행합니다.', tone: 'blue' }, { type: 'paragraph', text: '참고 자료에 선택 성취기준이 없으면 후보 확인과 교사 선택을 먼저 진행합니다.' }], notes: ['참고 자료에는 선택한 성취기준 코드, 교과서 자료, 수업에서 사용한 예시 등을 적을 수 있습니다.'] },
-  { id: '49', sectionId: 'appendix', sectionTitle: '부록', title: '결과 검토 체크리스트', layout: 'prompt-and-analysis', character: { role: 'reviewer', position: 'right' }, blocks: [{ type: 'prompt', text: reviewPrompt }, { type: 'checklist', items: ['추가 질문 없이 작동', '성취기준 정확성', '주제 관련성', '선호 활동 반영', '회피 활동 제외', '시간 적합성', '난이도', '수준별 지원', '학생용·교사용 분리', '정답·해설', 'AI 제안 표시', '교사 확인 사항'] }, { type: 'callout', text: '판정: 충족 / 일부 충족 / 미충족\n판정마다 결과의 실제 문장이나 위치를 근거로 기록합니다.', tone: 'blue' }], notes: ['검토 프롬프트도 AI의 출력이므로 교사가 근거를 다시 확인합니다.'] },
-  { id: '50', sectionId: 'appendix', sectionTitle: '부록', title: '고정값과 변수 작성표', layout: 'prompt-and-analysis', blocks: [{ type: 'table', headers: ['구분', '항목', '나의 값', '결과에서 확인할 방법'], rows: [['고정값', '기본 학생 수준', '', ''], ['고정값', '기본 활동 시간과 형태', '', ''], ['고정값', '선호 활동', '', ''], ['고정값', '피할 활동', '', ''], ['고정값', '지시문과 읽기 자료 난이도', '', ''], ['고정값', '기초·심화 지원', '', ''], ['고정값', '교사용 자료', '', ''], ['고정값', '출력 형식과 검토 기준', '', ''], ['변수', '학년', '매번 입력', '입력값 확인'], ['변수', '단원 또는 주제', '매번 입력', '입력값 확인'], ['변수', '자료 유형', '매번 입력', '입력값 확인'], ['변수', '활용 시간·특별 조건', '필요할 때 입력', '입력 시 기본값보다 우선'], ['변수', '참고 자료', '있을 때 입력', '비어 있으면 추가 참고 자료 없이 진행']] }, { type: 'prompt', text: fixedVariablePrompt }, { type: 'callout', text: '실제로 반복하는 조건만 기본값으로 저장합니다.', tone: 'yellow' }], notes: ['확인 방법을 쓰기 어려운 항목은 아직 모호한 기본값일 가능성이 큽니다.'] },
+  { id: '45', sectionId: 'appendix', sectionTitle: '부록', title: '교육과정 파일 연결 확인 프롬프트 전문', layout: 'prompt', toolContext: { kind: 'classic-gem', label: '클래식 Gem', detail: 'Knowledge 연결 확인' }, blocks: [{ type: 'paragraph', text: '교과 Markdown 파일 하나를 연결한 클래식 Gem에서 복사합니다.' }, { type: 'prompt', text: curriculumCheckPrompt }, { type: 'callout', text: '이 프롬프트는 연결 확인용입니다. 아직 수업자료를 만들지 않습니다.', tone: 'yellow' }, { type: 'process', items: ['파일 하나 연결', '프롬프트 실행', '후보 대조', '교사 선택'] }], notes: ['후보의 코드와 원문을 반드시 첨부 파일 검색 결과와 대조하게 합니다.'] },
+  { id: '46', sectionId: 'appendix', sectionTitle: '부록', title: '수업자료 생성기 설계 코치 프롬프트 전문', layout: 'prompt', toolContext: { kind: 'gemini', label: '일반 Gemini', detail: '새 대화에서 실행' }, character: { role: 'ai-helper', position: 'right' }, blocks: [{ type: 'paragraph', text: '일반 Gemini 새 대화에서 실행하고, 질문에는 실제 수업 경험으로 답합니다.' }, { type: 'prompt', text: designCoachPrompt }, { type: 'callout', text: '설계가 끝날 때까지 실제 수업자료를 만들지 않습니다.', tone: 'yellow' }], notes: ['AI 제안과 교사가 실제로 말한 원칙을 구분하는 문구를 삭제하지 않습니다.'] },
+  { id: '47', sectionId: 'appendix', sectionTitle: '부록', title: 'Gem 지시사항 전체 골격', layout: 'prompt', toolContext: { kind: 'classic-gem', label: '클래식 Gem', detail: '지시사항 설정에 저장' }, blocks: [{ type: 'paragraph', text: '대괄호 안을 자신의 값으로 바꾸고, 불필요한 예시는 삭제한 뒤 클래식 Gem의 지시사항에 저장합니다.' }, { type: 'prompt', label: '9개 영역 전체 지시사항', copyLabel: '전체 복사', text: gemSkeleton }, { type: 'callout', text: 'AI 제안은 교사가 확인한 뒤에만 고정 기본값으로 바꿉니다.', tone: 'yellow' }], notes: ['성취기준 후보 확인과 교사 선택은 모든 새 단원의 제작 전 점검 단계입니다. 선택 뒤에는 필수 입력이 있으면 질문을 반복하지 않게 합니다.', '한 화면에 전체 전문을 작게 축소하지 않고, 스크롤 가능한 DOM 전문과 전체 복사 기능을 함께 제공합니다.'] },
+  { id: '48', sectionId: 'appendix', sectionTitle: '부록', title: '이번 수업자료 입력 템플릿', layout: 'prompt-and-analysis', toolContext: { kind: 'classic-gem', label: '완성한 클래식 Gem', detail: '수업자료 생성' }, blocks: [{ type: 'prompt', text: inputTemplate }, { type: 'comparison', left: { title: '필수', blocks: [{ type: 'paragraph', text: '학년 · 단원 또는 주제 · 자료 유형' }] }, right: { title: '선택', blocks: [{ type: 'paragraph', text: '활용 시간 · 참고 자료 · 특별 조건' }] } }, { type: 'callout', text: '활용 시간과 특별 조건을 비우면 저장된 기본값이 적용됩니다. 참고 자료를 비우면 추가 자료 없이 진행합니다.', tone: 'blue' }, { type: 'paragraph', text: '참고 자료에 선택 성취기준이 없으면 후보 확인과 교사 선택을 먼저 진행합니다.' }], notes: ['참고 자료에는 선택한 성취기준 코드, 교과서 자료, 수업에서 사용한 예시 등을 적을 수 있습니다.'] },
+  { id: '49', sectionId: 'appendix', sectionTitle: '부록', title: '결과 검토 체크리스트', layout: 'prompt-and-analysis', toolContext: { kind: 'gemini', label: '일반 Gemini', detail: '새 대화에서 독립 검토' }, character: { role: 'reviewer', position: 'right' }, blocks: [{ type: 'prompt', text: reviewPrompt }, { type: 'checklist', items: ['추가 질문 없이 작동', '성취기준 정확성', '주제 관련성', '선호 활동 반영', '회피 활동 제외', '시간 적합성', '난이도', '수준별 지원', '학생용·교사용 분리', '정답·해설', 'AI 제안 표시', '교사 확인 사항'] }, { type: 'callout', text: '판정: 충족 / 일부 충족 / 미충족\n판정마다 결과의 실제 문장이나 위치를 근거로 기록합니다.', tone: 'blue' }], notes: ['완성한 Gem과 분리된 일반 Gemini 새 대화에서 검토 프롬프트를 실행합니다. 검토 프롬프트도 AI의 출력이므로 교사가 근거를 다시 확인합니다.'] },
+  { id: '50', sectionId: 'appendix', sectionTitle: '부록', title: '고정값과 변수 작성표', layout: 'prompt-and-analysis', toolContext: { kind: 'gemini', label: '일반 Gemini', detail: '설계 보조' }, blocks: [{ type: 'table', headers: ['구분', '항목', '나의 값', '결과에서 확인할 방법'], rows: [['고정값', '기본 학생 수준', '', ''], ['고정값', '기본 활동 시간과 형태', '', ''], ['고정값', '선호 활동', '', ''], ['고정값', '피할 활동', '', ''], ['고정값', '지시문과 읽기 자료 난이도', '', ''], ['고정값', '기초·심화 지원', '', ''], ['고정값', '교사용 자료', '', ''], ['고정값', '출력 형식과 검토 기준', '', ''], ['변수', '학년', '매번 입력', '입력값 확인'], ['변수', '단원 또는 주제', '매번 입력', '입력값 확인'], ['변수', '자료 유형', '매번 입력', '입력값 확인'], ['변수', '활용 시간·특별 조건', '필요할 때 입력', '입력 시 기본값보다 우선'], ['변수', '참고 자료', '있을 때 입력', '비어 있으면 추가 참고 자료 없이 진행']] }, { type: 'prompt', text: fixedVariablePrompt }, { type: 'callout', text: '실제로 반복하는 조건만 기본값으로 저장합니다.', tone: 'yellow' }], notes: ['일반 Gemini 새 대화에서 작성표의 조건을 분류할 수 있습니다. 확인 방법을 쓰기 어려운 항목은 아직 모호한 기본값일 가능성이 큽니다.'] },
   {
     id: '51', sectionId: 'appendix', sectionTitle: '부록', title: '결과물이 너무 길 때 수정 규칙', layout: 'prompt-and-analysis', character: { role: 'reviewer', position: 'right' },
+    toolContext: { kind: 'gemini', label: '일반 Gemini', detail: '새 대화에서 원인 진단' },
     blocks: [{ type: 'callout', label: '피할 요청', text: '이번 자료만 짧게 줄여 주세요.', tone: 'red' }, { type: 'checklist', items: ['핵심 활동은 최대 3개로 제한한다.', '학생용 지시문은 활동당 두 문장 이내로 쓴다.', '활동별 예상 시간의 합이 입력 시간을 넘지 않게 한다.', '읽기 자료는 활동 수행에 필요한 핵심 정보만 남긴다.'] }, { type: 'prompt', text: lengthPrompt }, { type: 'process', items: ['증상', '확인할 원인', '저장할 규칙', '다음 시험 기준'] }],
     notes: ['분량을 줄일 때 성취기준에 필요한 핵심 활동까지 사라지지 않았는지 확인합니다.'],
   },
   {
     id: '52', sectionId: 'appendix', sectionTitle: '부록', title: '결과물이 너무 어려울 때 수정 규칙', layout: 'prompt-and-analysis', character: { role: 'student', position: 'right' },
+    toolContext: { kind: 'gemini', label: '일반 Gemini', detail: '새 대화에서 원인 진단' },
     blocks: [{ type: 'callout', label: '피할 요청', text: '이번 활동지만 더 쉽게 만들어 주세요.', tone: 'red' }, { type: 'columns', columns: ['어휘', '문장', '자료량', '사고 단계', '지원'].map((title) => ({ title, blocks: [{ type: 'paragraph', text: '결과에서 확인' }] })) }, { type: 'checklist', items: ['학생용 지시문은 두 문장 이내로 작성한다.', '새 개념어에는 짧은 풀이를 붙인다.', '복합 과제는 한 단계씩 나누어 제시한다.', '근거 문항에는 문장 시작 표현을 제공한다.'] }, { type: 'prompt', text: difficultyPrompt }],
     notes: ['난이도를 낮추는 것과 필요한 발판을 제공하는 것을 구분합니다.'],
   },
   {
     id: '53', sectionId: 'appendix', sectionTitle: '부록', title: '활동이 단순할 때 수정 규칙', layout: 'prompt-and-analysis', character: { role: 'student', position: 'right' },
+    toolContext: { kind: 'gemini', label: '일반 Gemini', detail: '새 대화에서 원인 진단' },
     blocks: [{ type: 'callout', label: '피할 요청', text: '이번 활동지를 더 재미있게 바꿔 주세요.', tone: 'red' }, { type: 'process', items: ['단순 회상', '사고 행동', '근거 표현', '교사용 성공 기준'] }, { type: 'checklist', items: ['핵심 활동에는 비교, 분류, 오류 찾기, 사례 판단, 자료 해석 중 성취기준에 맞는 사고 행동을 포함한다.', '단순 선택 뒤에는 판단 근거를 쓰게 한다.', '빈칸 채우기는 핵심 활동이 아니라 사전 확인에만 제한한다.'] }, { type: 'prompt', text: activityPrompt }],
     notes: ['활동을 복잡하게 만드는 것이 아니라 성취기준에 필요한 사고를 드러내게 합니다.'],
   },
   {
     id: '54', sectionId: 'appendix', sectionTitle: '부록', title: '정답이나 성공 기준이 모호할 때 수정 규칙', layout: 'prompt-and-analysis', character: { role: 'reviewer', position: 'right' },
+    toolContext: { kind: 'gemini', label: '일반 Gemini', detail: '새 대화에서 원인 진단' },
     blocks: [{ type: 'table', headers: ['문항 유형', '교사용에 필요한 기준'], rows: [['객관식·단답형', '정답과 해설'], ['서술형', '인정 가능한 답안 요소와 근거 기준'], ['사례 판단', '판단과 근거, 부분 성취 기준'], ['작품 해석·토론', '타당한 다른 답을 인정하는 조건']] }, { type: 'checklist', items: ['객관식·단답형에는 정답과 해설을 제공한다.', '서술형에는 인정 가능한 답안 요소와 근거 기준을 제공한다.', '복수 해석이 가능한 문항에는 타당한 다른 답을 인정하는 조건을 적는다.', '교사 확인이 필요한 판단은 따로 표시한다.'] }, { type: 'prompt', text: successCriteriaPrompt }],
     notes: ['성공 기준은 교사의 평가 판단을 돕는 초안이며, 교육과정이 자동으로 제공하는 정답표가 아닙니다.'],
   },
   {
     id: '55', sectionId: 'appendix', sectionTitle: '부록', title: '성취기준을 잘못 선택했을 때 대응', layout: 'prompt-and-analysis', character: { role: 'reviewer', position: 'right' },
+    toolContext: { kind: 'classic-gem', label: '완성한 클래식 Gem', detail: '현재 대화에서 수정' },
     blocks: [{ type: 'process', items: ['현재 코드·원문 확인', '파일 검색', '후보 최대 3개', '교사 선택', '관련 부분 다시 생성'] }, { type: 'table', headers: ['오류 유형', '대응'], rows: [['파일에 없음', '추측하지 않고 중단'], ['코드·원문 불일치', '파일 원문과 위치 대조'], ['주제 관련성 낮음', '관련 후보 최대 3개'], ['다른 교과 기준 혼입', '내 교과 파일 하나로 범위 제한']] }, { type: 'prompt', text: achievementCorrectionPrompt }, { type: 'callout', text: '파일에 없는 코드나 원문을 비슷하게 고쳐 쓰지 않습니다.', tone: 'red' }],
     notes: ['코드가 그럴듯하다는 이유로 채택하지 않고 파일 안의 원문과 위치를 확인합니다.'],
   },
   {
     id: '56', sectionId: 'appendix', sectionTitle: '부록', title: 'AI가 계속 질문할 때 대응', layout: 'prompt-and-analysis', character: { role: 'teacher', position: 'right' },
+    toolContext: { kind: 'classic-gem', label: '완성한 클래식 Gem', detail: '현재 대화에서 실행' },
     blocks: [{ type: 'comparison', left: { title: '필수', blocks: [{ type: 'paragraph', text: '학년 · 단원 또는 주제 · 자료 유형' }] }, right: { title: '선택', blocks: [{ type: 'paragraph', text: '활용 시간 · 참고 자료 · 특별 조건' }] } }, { type: 'process', items: ['입력 확인', '성취기준 선택 확인', '필수 정보 확인', '생성 또는 누락 항목 질문'] }, { type: 'prompt', text: stopQuestionsPrompt }, { type: 'callout', text: '성취기준 선택 뒤 필수 정보가 모두 있으면 추가 질문 없이 생성합니다.', tone: 'green' }],
     notes: ['반복 질문은 매번 대화하지 않으려는 생성기의 목적과 맞지 않으므로 결과가 아니라 질문 규칙을 고칩니다.'],
   },
   {
     id: '57', sectionId: 'appendix', sectionTitle: '부록', title: '학생용과 교사용 자료가 섞일 때 대응', layout: 'prompt-and-analysis', character: [{ role: 'student', position: 'left' }, { role: 'teacher', position: 'right' }],
+    toolContext: { kind: 'classic-gem', label: '완성한 클래식 Gem', detail: '현재 대화에서 실행' },
     blocks: [{ type: 'comparison', left: { title: '학생용', blocks: [{ type: 'paragraph', text: '목표 · 읽기 자료 · 활동 지시 · 도움말 · 응답 공간\n정답과 해설 제외' }] }, right: { title: '교사용', blocks: [{ type: 'paragraph', text: '활동 의도 · 정답/예시 답안 · 인정 요소 · 해설 · 오개념 · 피드백' }] } }, { type: 'prompt', text: separationPrompt }, { type: 'headline', text: '학생용을 먼저 완결된 구획으로 출력하고,\n구분선 뒤에 교사용을 출력합니다.', tone: 'yellow' }],
     notes: ['학생에게 배포하기 전에는 정답과 해설이 학생용 구획에 남아 있지 않은지 교사가 직접 확인합니다.'],
   },
   {
     id: '58', sectionId: 'appendix', sectionTitle: '부록', title: 'Gem을 만들 수 없거나 파일 연결이 안 될 때 대체 방법', layout: 'prompt-and-analysis', character: { role: 'ai-helper', position: 'right' },
+    toolContext: { kind: 'gemini', label: '일반 Gemini', detail: 'Gem 대체 실행' },
     blocks: [{ type: 'comparison', left: { title: 'Gem 생성 불가', blocks: [{ type: 'paragraph', text: '일반 Gemini 대화에 내 교과 Markdown 하나 연결 → Gem 지시사항 전문 붙여넣기 → 이번 입력 붙여넣기' }] }, right: { title: '파일 연결 불가', blocks: [{ type: 'paragraph', text: '교사가 직접 확인한 성취기준 코드·원문·근거 위치만 붙여넣기 → 지시사항 전문 → 이번 입력' }] } }, { type: 'prompt', text: backupPrompt }, { type: 'callout', text: 'ZIP 전체를 붙이지 않습니다. 파일을 읽을 수 없으면 성취기준을 추측하게 하지 않습니다. 대화가 바뀌면 지시사항을 다시 제공합니다.', tone: 'yellow' }],
     notes: ['Gem은 규칙을 저장하는 편의 기능입니다. 핵심 산출물은 지식 파일과 지시사항, 입력·검토 구조이므로 일반 대화에서도 재현할 수 있습니다.'],
   },
   {
     id: '59', sectionId: 'appendix', sectionTitle: '부록', title: 'Canva로 옮기기 위한 후처리 프롬프트', layout: 'prompt',
+    toolContext: { kind: 'gemini', label: '일반 Gemini', detail: 'Canva용 원고 재구성' },
     blocks: [{ type: 'process', items: ['내용 검토 완료', '페이지 단위 재구성', 'Canva에서 시각 편집', '교사 최종 확인'] }, { type: 'prompt', text: canvaPrompt }, { type: 'callout', text: '후처리 단계에서 성취기준, 문항, 정답을 새로 만들지 않습니다.', tone: 'red' }],
     notes: ['Canva 이동은 생성 규칙 설계가 끝난 뒤의 선택적 후처리입니다. 시각 편집 때문에 교육과정 근거나 정답이 바뀌지 않게 합니다.'],
   },
   {
     id: '60', sectionId: 'appendix', sectionTitle: '부록', title: '최종 저장 목록과 다음 수업에서의 재사용 절차', layout: 'comparison-and-next', character: { role: 'teacher', position: 'right' },
+    toolContext: { kind: 'classic-gem', label: '다음 수업', detail: '완성한 클래식 Gem 재사용' },
     blocks: [
       { type: 'checklist', ordered: true, items: ['내 교과 Markdown 원본 파일', '교과 파일 하나가 연결된 클래식 Gemini Gem 또는 대체 작업 문서', '교사가 확인한 Gem 지시사항 전체본과 버전 날짜', '고정값과 변수 작성표', '시험 A 입력·원본 결과·검토표', '시험 B 입력·원본 결과·검토표', '변경 전 규칙과 변경 후 규칙 한 줄', '다음 시험에서 확인할 질문'] },
       { type: 'process', items: ['Gem 열기', '교과 파일 연결 확인', '입력 템플릿의 변수만 변경', '생성', '교사 검토', '문제가 반복되면 규칙 한 줄 수정', '버전 기록'] },

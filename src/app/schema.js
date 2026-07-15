@@ -10,6 +10,7 @@
 
 /** @typedef {'teacher'|'ai-helper'|'reviewer'|'student'} CharacterRole */
 /** @typedef {'left'|'right'|'center'} CharacterPosition */
+/** @typedef {'gemini'|'classic-gem'|'offline'|'transition'} ToolContextKind */
 
 /**
  * @typedef {Object} CommonBlock
@@ -172,6 +173,7 @@
  * @property {string} [subtitle] 슬라이드 부제
  * @property {string} layout 레이아웃 프리셋 이름
  * @property {number} [durationSeconds] 권장 진행 시간
+ * @property {{kind:ToolContextKind,label:string,detail?:string}} [toolContext] 이 슬라이드에서 사용할 도구와 실행 위치
  * @property {SlideCharacter|SlideCharacter[]} [character]
  * @property {Block[]} blocks 렌더러가 순서대로 출력할 콘텐츠
  * @property {string[]} notes 청중 화면과 분리된 발표자 노트

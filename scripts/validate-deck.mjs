@@ -314,6 +314,23 @@ function validateSlide(slide, index) {
     addError(location, 'layout이 필요합니다.');
   }
 
+  if (slide.toolContext !== undefined) {
+    const validToolContextKinds = new Set(['gemini', 'classic-gem', 'offline', 'transition']);
+    if (!isRecord(slide.toolContext)) {
+      addError(location, 'toolContext는 객체여야 합니다.');
+    } else {
+      if (!validToolContextKinds.has(slide.toolContext.kind)) {
+        addError(location, 'toolContext.kind는 gemini, classic-gem, offline, transition 중 하나여야 합니다.');
+      }
+      if (!isNonEmptyString(slide.toolContext.label)) {
+        addError(location, 'toolContext.label은 비어 있지 않은 문자열이어야 합니다.');
+      }
+      if (slide.toolContext.detail !== undefined && !isNonEmptyString(slide.toolContext.detail)) {
+        addError(location, 'toolContext.detail은 비어 있지 않은 문자열이어야 합니다.');
+      }
+    }
+  }
+
   if (!Array.isArray(slide.notes) || slide.notes.length === 0) {
     addError(location, 'notes는 한 개 이상의 발표자 노트가 있는 배열이어야 합니다.');
   } else {

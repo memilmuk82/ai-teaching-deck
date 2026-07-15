@@ -24,6 +24,7 @@ AI가 추정한 내용은 ‘AI 제안’이라고 표시하세요.
 export const slides = [
   {
     id: '40', sectionId: 'rule-improvement', sectionTitle: '생성기 규칙 개선', title: '이번 결과가 아니라 다음 결과의 규칙을 고칩니다', layout: 'comparison', durationSeconds: 120,
+    toolContext: { kind: 'offline', label: '전체 확인', detail: '시험 A·B 비교' },
     blocks: [
       { type: 'comparison', left: { title: '이번 결과만 고치는 요청', label: '일회성 수정', blocks: [{ type: 'bullets', items: ['이번 자료에서 3번 문항을 삭제한다.', '이번 활동지만 더 쉽게 고친다.'] }] }, right: { title: '다음 결과에도 적용되는 규칙', label: '생성기 규칙', blocks: [{ type: 'bullets', items: ['핵심 활동은 최대 3개로 제한한다.', '각 지시문은 두 문장 이내로 작성한다.', '활동별 예상 시간을 표시한다.', '모든 서술형 문항에 인정 가능한 답안 요소를 제시한다.', '사례 판단 문항에는 판단 근거를 작성하게 한다.'] }] } },
       { type: 'headline', text: '두 시험에서 다시 사용할 수 있는 문장만\nGem 지시사항에 저장합니다.', tone: 'green' },
@@ -32,6 +33,7 @@ export const slides = [
   },
   {
     id: '41', sectionId: 'rule-improvement', sectionTitle: '생성기 규칙 개선', title: '가장 큰 문제 하나만 규칙 한 줄로 바꿉니다', layout: 'prompt-and-analysis', durationSeconds: 180,
+    toolContext: { kind: 'transition', label: '일반 Gemini → 클래식 Gem', detail: '규칙 제안 후 저장' },
     character: { role: 'reviewer', position: 'right' },
     blocks: [
       { type: 'prompt', label: '규칙 수정 프롬프트', text: revisionPrompt },
