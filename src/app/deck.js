@@ -286,8 +286,9 @@ export function renderSlideElement(slide, options = {}) {
     interactive: options.interactive ?? (!options.previewId && !options.print),
   };
   const titleId = `slide-title-${safeModifier(slide.id)}-${options.previewId ?? (options.print ? "print" : "active")}`;
+  const extendedClass = Number.parseInt(slide.id, 10) >= 19 ? " slide--extended" : "";
   const article = el("article", {
-    className: `slide slide--${safeModifier(slide.layout)}`,
+    className: `slide slide--${safeModifier(slide.layout)}${extendedClass}`,
     "aria-labelledby": titleId,
     dataset: { slideId: slide.id, layout: slide.layout, sectionId: slide.sectionId },
   });

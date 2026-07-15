@@ -1846,6 +1846,255 @@ button:disabled {
   font-size: 14px;
 }
 
+/* 슬라이드 19–44: 기존 16:9 리듬에 맞춘 고밀도 콘텐츠 규칙 */
+.slide--extended:not([data-section-id="appendix"]) {
+  padding: 27px 48px 24px;
+}
+
+.slide--extended:not([data-section-id="appendix"]) .slide-heading {
+  margin-bottom: 13px;
+}
+
+.slide--extended:not([data-section-id="appendix"]) .slide-heading h1 {
+  font-size: 43px;
+  line-height: 1.12;
+}
+
+.slide--extended:not([data-section-id="appendix"]) .slide-body {
+  gap: 10px;
+  font-size: 20px;
+  line-height: 1.32;
+}
+
+.slide--extended:not([data-section-id="appendix"]) > .character {
+  display: none;
+}
+
+.slide--extended:not([data-section-id="appendix"]) :is(.block--paragraph, .block--bullets, .block--numbered-list) {
+  font-size: 20px;
+  line-height: 1.32;
+}
+
+.slide--extended:not([data-section-id="appendix"]) .block--headline {
+  padding: 5px 0 5px 15px;
+  border-left-width: 6px;
+  font-size: 23px;
+  line-height: 1.25;
+}
+
+.slide--extended:not([data-section-id="appendix"]) .block--callout {
+  min-height: 48px;
+  gap: 10px;
+  padding: 8px 14px;
+  border-radius: 14px;
+}
+
+.slide--extended:not([data-section-id="appendix"]) .block--callout p {
+  font-size: 19px;
+  line-height: 1.25;
+}
+
+.slide--extended:not([data-section-id="appendix"]) .callout-label {
+  padding: 5px 8px;
+  font-size: 15px;
+}
+
+.slide--extended:not([data-section-id="appendix"]) .block--process {
+  margin-top: 0;
+}
+
+.slide--extended:not([data-section-id="appendix"]) .block--process li {
+  min-height: 52px;
+  padding: 8px 27px 8px 9px;
+}
+
+.slide--extended:not([data-section-id="appendix"]) .block--process li:last-child {
+  padding-right: 9px;
+}
+
+.slide--extended:not([data-section-id="appendix"]) :is(.process-text, .process-number) {
+  font-size: 16px;
+}
+
+.slide--extended:not([data-section-id="appendix"]) .comparison-panel {
+  min-height: 0;
+  padding: 13px 18px;
+  border-top-width: 6px;
+  border-radius: 15px;
+}
+
+.slide--extended:not([data-section-id="appendix"]) :is(.comparison-panel h3, .column-panel h3) {
+  margin: 2px 0 8px;
+  font-size: 22px;
+}
+
+.slide--extended:not([data-section-id="appendix"]) .comparison-panel .block--paragraph {
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.slide--extended:not([data-section-id="appendix"]) .column-panel {
+  padding: 11px 14px;
+  border-top-width: 5px;
+  border-radius: 3px 3px 13px 13px;
+}
+
+.slide--extended:not([data-section-id="appendix"]) .panel-body {
+  gap: 7px;
+}
+
+.slide--extended:not([data-section-id="appendix"]) .checklist {
+  gap: 5px;
+}
+
+.slide--extended:not([data-section-id="appendix"]) .checklist li {
+  min-height: 43px;
+  gap: 11px;
+  padding: 4px 10px;
+  font-size: 20px;
+  line-height: 1.22;
+}
+
+.slide--extended:not([data-section-id="appendix"]) :is(.check-icon, .check-index) {
+  width: 32px;
+  height: 32px;
+  border-width: 2px;
+}
+
+.slide--extended:not([data-section-id="appendix"]) .table-wrap :is(th, td) {
+  padding: 6px 10px;
+  font-size: 17px;
+  line-height: 1.2;
+}
+
+.slide--extended:not([data-section-id="appendix"]) .table-wrap thead th {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-size: 18px;
+}
+
+.slide--extended:not([data-section-id="appendix"]) .message-card {
+  max-width: 1050px;
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: 14px;
+}
+
+.slide--extended:not([data-section-id="appendix"]) .message-card .character--inline {
+  width: 76px;
+}
+
+.slide--extended:not([data-section-id="appendix"]) .message-bubble {
+  padding: 12px 18px;
+  border-radius: 15px;
+  font-size: 19px;
+}
+
+.slide--extended:not([data-section-id="appendix"]) .message-bubble li {
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+.slide--extended:not([data-section-id="appendix"]) .block--action {
+  gap: 6px;
+  padding: 11px 14px;
+}
+
+.slide--extended:not([data-section-id="appendix"]) :is(.slide-action-button, .action-description) {
+  font-size: 18px;
+}
+
+/* 부록 45–60: 전문은 스크롤 영역에 보존하고 주변 검토 요소를 압축합니다. */
+.slide[data-section-id="appendix"] > .character {
+  display: none;
+}
+
+.slide[data-section-id="appendix"] .checklist {
+  gap: 3px;
+}
+
+.slide[data-section-id="appendix"] .checklist li {
+  min-height: 34px;
+  gap: 8px;
+  padding: 2px 7px;
+  font-size: 16px;
+  line-height: 1.18;
+}
+
+.slide[data-section-id="appendix"] :is(.check-icon, .check-index) {
+  width: 26px;
+  height: 26px;
+  border-width: 2px;
+  font-size: 12px;
+}
+
+.slide[data-section-id="appendix"] .check-icon .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.slide[data-section-id="appendix"] .comparison-panel {
+  min-height: 0;
+  padding: 9px 12px;
+  border-top-width: 5px;
+}
+
+.slide[data-section-id="appendix"] :is(.comparison-panel h3, .column-panel h3) {
+  margin: 1px 0 5px;
+  font-size: 18px;
+}
+
+.slide[data-section-id="appendix"] .comparison-panel .block--paragraph {
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.slide[data-section-id="appendix"] .column-panel {
+  padding: 8px 10px;
+  border-top-width: 4px;
+}
+
+.slide[data-section-id="appendix"] .panel-body {
+  gap: 4px;
+}
+
+.slide[data-section-id="appendix"] .block--process li {
+  min-height: 40px;
+  padding: 5px 22px 5px 7px;
+}
+
+.slide[data-section-id="appendix"] .block--process li:last-child {
+  padding-right: 7px;
+}
+
+.slide[data-section-id="appendix"] :is(.process-text, .process-number) {
+  font-size: 13px;
+}
+
+.slide[data-section-id="appendix"] .prompt-header {
+  min-height: 48px;
+  padding: 6px 9px 6px 15px;
+}
+
+.slide[data-section-id="appendix"] .copy-button {
+  padding: 6px 10px;
+  font-size: 15px;
+}
+
+.slide[data-section-id="appendix"] .columns--5 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.slide[data-slide-id="49"] .checklist {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px 8px;
+}
+
+.slide[data-slide-id="49"] .block--callout {
+  align-self: end;
+}
+
 /* 발표자 UI */
 .deck-footer {
   justify-content: space-between;
