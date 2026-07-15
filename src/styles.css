@@ -1814,7 +1814,7 @@ button:disabled {
 }
 
 .slide[data-slide-id="50"] .slide-body {
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
 }
 
 .slide[data-slide-id="50"] .block--table {
@@ -1846,228 +1846,392 @@ button:disabled {
   font-size: 14px;
 }
 
-/* 슬라이드 19–44: 기존 16:9 리듬에 맞춘 고밀도 콘텐츠 규칙 */
-.slide--extended:not([data-section-id="appendix"]) {
-  padding: 27px 48px 24px;
+/* 슬라이드 19–60: 1–18의 타이포 위계와 16:9 공간 리듬을 이어갑니다. */
+.slide--extended {
+  --extended-title-size: 52px;
+  --extended-body-size: 25px;
+  --extended-card-title-size: 28px;
+  --extended-card-body-size: 23px;
+  --extended-table-head-size: 22px;
+  --extended-table-cell-size: 21px;
+  --extended-check-size: 24px;
+  --extended-process-size: 20px;
+  --extended-headline-size: 29px;
+  padding: 34px 64px 30px;
 }
 
-.slide--extended:not([data-section-id="appendix"]) .slide-heading {
-  margin-bottom: 13px;
+.slide--extended[data-section-id="appendix"] {
+  --extended-title-size: 50px;
+  --extended-body-size: 22px;
+  --extended-card-title-size: 22px;
+  --extended-card-body-size: 20px;
+  --extended-table-head-size: 20px;
+  --extended-table-cell-size: 19px;
+  --extended-check-size: 20px;
+  --extended-process-size: 17px;
+  --extended-headline-size: 24px;
+  padding: 30px 56px 28px;
 }
 
-.slide--extended:not([data-section-id="appendix"]) .slide-heading h1 {
-  font-size: 43px;
+.slide--extended .slide-heading {
+  margin-bottom: 18px;
+}
+
+.slide--extended .slide-heading h1 {
+  font-size: var(--extended-title-size);
   line-height: 1.12;
 }
 
-.slide--extended:not([data-section-id="appendix"]) .slide-body {
-  gap: 10px;
-  font-size: 20px;
-  line-height: 1.32;
+.slide--extended .slide-body {
+  gap: 16px;
+  font-size: var(--extended-body-size);
+  line-height: 1.4;
 }
 
-.slide--extended:not([data-section-id="appendix"]) > .character {
+.slide--extended > .character {
   display: none;
 }
 
-.slide--extended:not([data-section-id="appendix"]) :is(.block--paragraph, .block--bullets, .block--numbered-list) {
-  font-size: 20px;
-  line-height: 1.32;
+.slide--extended :is(.block--paragraph, .block--bullets, .block--numbered-list) {
+  font-size: var(--extended-body-size);
+  line-height: 1.4;
 }
 
-.slide--extended:not([data-section-id="appendix"]) .block--headline {
-  padding: 5px 0 5px 15px;
-  border-left-width: 6px;
-  font-size: 23px;
-  line-height: 1.25;
+.slide--extended .block--headline {
+  padding: 8px 0 8px 19px;
+  border-left-width: 7px;
+  font-size: var(--extended-headline-size);
+  line-height: 1.3;
 }
 
-.slide--extended:not([data-section-id="appendix"]) .block--callout {
-  min-height: 48px;
-  gap: 10px;
-  padding: 8px 14px;
-  border-radius: 14px;
+.slide--extended .block--callout {
+  min-height: 68px;
+  gap: 14px;
+  padding: 12px 19px;
+  border-radius: 17px;
 }
 
-.slide--extended:not([data-section-id="appendix"]) .block--callout p {
-  font-size: 19px;
-  line-height: 1.25;
+.slide--extended .block--callout p {
+  font-size: calc(var(--extended-body-size) - 1px);
+  line-height: 1.3;
 }
 
-.slide--extended:not([data-section-id="appendix"]) .callout-label {
-  padding: 5px 8px;
-  font-size: 15px;
+.slide--extended .callout-label {
+  padding: 7px 10px;
+  font-size: 17px;
 }
 
-.slide--extended:not([data-section-id="appendix"]) .block--process {
+.slide--extended .block--process {
   margin-top: 0;
 }
 
-.slide--extended:not([data-section-id="appendix"]) .block--process li {
-  min-height: 52px;
-  padding: 8px 27px 8px 9px;
+.slide--extended .block--process li {
+  min-height: 66px;
+  padding: 11px 31px 11px 12px;
 }
 
-.slide--extended:not([data-section-id="appendix"]) .block--process li:last-child {
-  padding-right: 9px;
+.slide--extended .block--process li:last-child {
+  padding-right: 12px;
 }
 
-.slide--extended:not([data-section-id="appendix"]) :is(.process-text, .process-number) {
-  font-size: 16px;
+.slide--extended .process-text {
+  font-size: var(--extended-process-size);
+  line-height: 1.25;
 }
 
-.slide--extended:not([data-section-id="appendix"]) .comparison-panel {
+.slide--extended .process-number {
+  width: 36px;
+  height: 36px;
+  font-size: 15px;
+}
+
+.slide--extended .block--comparison {
+  gap: 28px;
+}
+
+.slide--extended .comparison-panel {
   min-height: 0;
-  padding: 13px 18px;
-  border-top-width: 6px;
-  border-radius: 15px;
+  padding: 22px 26px;
+  border-top-width: 7px;
+  border-radius: 18px;
 }
 
-.slide--extended:not([data-section-id="appendix"]) :is(.comparison-panel h3, .column-panel h3) {
-  margin: 2px 0 8px;
-  font-size: 22px;
-}
-
-.slide--extended:not([data-section-id="appendix"]) .comparison-panel .block--paragraph {
-  font-size: 20px;
-  line-height: 1.35;
-}
-
-.slide--extended:not([data-section-id="appendix"]) .column-panel {
-  padding: 11px 14px;
-  border-top-width: 5px;
-  border-radius: 3px 3px 13px 13px;
-}
-
-.slide--extended:not([data-section-id="appendix"]) .panel-body {
-  gap: 7px;
-}
-
-.slide--extended:not([data-section-id="appendix"]) .checklist {
-  gap: 5px;
-}
-
-.slide--extended:not([data-section-id="appendix"]) .checklist li {
-  min-height: 43px;
-  gap: 11px;
-  padding: 4px 10px;
-  font-size: 20px;
-  line-height: 1.22;
-}
-
-.slide--extended:not([data-section-id="appendix"]) :is(.check-icon, .check-index) {
-  width: 32px;
-  height: 32px;
-  border-width: 2px;
-}
-
-.slide--extended:not([data-section-id="appendix"]) .table-wrap :is(th, td) {
-  padding: 6px 10px;
-  font-size: 17px;
+.slide--extended :is(.comparison-panel h3, .column-panel h3) {
+  margin: 4px 0 14px;
+  font-size: var(--extended-card-title-size);
   line-height: 1.2;
 }
 
-.slide--extended:not([data-section-id="appendix"]) .table-wrap thead th {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  font-size: 18px;
+.slide--extended .comparison-panel .block--paragraph,
+.slide--extended .column-panel .block--paragraph {
+  font-size: var(--extended-card-body-size);
+  line-height: 1.4;
 }
 
-.slide--extended:not([data-section-id="appendix"]) .message-card {
-  max-width: 1050px;
-  grid-template-columns: 76px minmax(0, 1fr);
-  gap: 14px;
+.slide--extended .column-panel {
+  padding: 18px 20px;
+  border-top-width: 6px;
+  border-radius: 4px 4px 16px 16px;
 }
 
-.slide--extended:not([data-section-id="appendix"]) .message-card .character--inline {
-  width: 76px;
+.slide--extended .panel-body {
+  gap: 10px;
 }
 
-.slide--extended:not([data-section-id="appendix"]) .message-bubble {
-  padding: 12px 18px;
-  border-radius: 15px;
-  font-size: 19px;
+.slide--extended .checklist {
+  gap: 7px;
 }
 
-.slide--extended:not([data-section-id="appendix"]) .message-bubble li {
-  font-size: 18px;
+.slide--extended .checklist li {
+  min-height: 50px;
+  gap: 13px;
+  padding: 6px 12px;
+  font-size: var(--extended-check-size);
   line-height: 1.25;
 }
 
-.slide--extended:not([data-section-id="appendix"]) .block--action {
-  gap: 6px;
-  padding: 11px 14px;
+.slide--extended :is(.check-icon, .check-index) {
+  width: 36px;
+  height: 36px;
+  border-width: 2px;
 }
 
-.slide--extended:not([data-section-id="appendix"]) :is(.slide-action-button, .action-description) {
-  font-size: 18px;
+.slide--extended .check-index {
+  font-size: 15px;
 }
 
-/* 부록 45–60: 전문은 스크롤 영역에 보존하고 주변 검토 요소를 압축합니다. */
-.slide[data-section-id="appendix"] > .character {
+.slide--extended .check-icon .icon {
+  width: 21px;
+  height: 21px;
+}
+
+.slide--extended .table-wrap :is(th, td) {
+  padding: 9px 15px;
+  font-size: var(--extended-table-cell-size);
+  line-height: 1.25;
+}
+
+.slide--extended .table-wrap thead th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-size: var(--extended-table-head-size);
+}
+
+.slide--extended .message-card {
+  max-width: 1120px;
+  grid-template-columns: 104px minmax(0, 1fr);
+  gap: 18px;
+}
+
+.slide--extended .message-card .character--inline {
+  width: 104px;
+}
+
+.slide--extended .message-bubble {
+  padding: 17px 23px;
+  border-radius: 19px;
+  font-size: 24px;
+}
+
+.slide--extended .message-bubble li {
+  font-size: 22px;
+  line-height: 1.35;
+}
+
+.slide--extended .block--action {
+  gap: 10px;
+  padding: 18px 21px;
+}
+
+.slide--extended .slide-action-button {
+  font-size: 22px;
+}
+
+.slide--extended .action-description {
+  font-size: 21px;
+}
+
+/* prompt 본문 크기와 표면은 유지하고, 불필요한 우측 예약 공간만 제거합니다. */
+.slide--extended.slide--prompt .slide-body {
+  padding-right: 0;
+}
+
+.slide--extended.slide--comparison .block--comparison,
+.slide--extended.slide--process :is(.block--comparison, .block--table, .block--columns) {
+  min-height: 0;
+  flex: 1 1 auto;
+}
+
+.slide--extended.slide--comparison .comparison-panel,
+.slide--extended.slide--process .comparison-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slide--extended.slide--table .table-wrap,
+.slide--extended.slide--process .table-wrap {
+  height: 100%;
+}
+
+.slide--extended.slide--table .table-wrap table,
+.slide--extended.slide--process .table-wrap table {
+  height: 100%;
+}
+
+.slide--extended.slide--cards .slide-body {
+  display: grid;
+  grid-template-rows: repeat(3, minmax(0, 1fr)) auto;
+}
+
+.slide--extended.slide--cards .block--columns,
+.slide--extended.slide--cards .column-panel {
+  height: 100%;
+}
+
+.slide--extended.slide--cards .column-panel {
+  justify-content: center;
+}
+
+/* 슬라이드별 정보 구조에 맞춘 공간 재배치 */
+.slide[data-slide-id="19"] .slide-body {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  grid-template-rows: auto auto minmax(0, 1fr);
+  gap: 18px 24px;
+}
+
+.slide[data-slide-id="19"] :is(.block--paragraph, .block--process) {
+  grid-column: 1 / -1;
+}
+
+.slide[data-slide-id="19"] :is(.block--action, .block--callout) {
+  min-height: 0;
+  align-content: center;
+}
+
+.slide[data-slide-id="20"] .slide-body,
+.slide[data-slide-id="31"] .slide-body,
+.slide[data-slide-id="37"] .slide-body {
+  display: flex;
+  height: 100%;
+}
+
+.slide[data-slide-id="20"] .block--comparison,
+.slide[data-slide-id="31"] .block--table,
+.slide[data-slide-id="37"] .block--comparison {
+  flex: 1 1 auto;
+}
+
+.slide[data-slide-id="24"] .table-wrap,
+.slide[data-slide-id="31"] .table-wrap,
+.slide[data-slide-id="38"] .table-wrap,
+.slide[data-slide-id="43"] .table-wrap {
+  height: 100%;
+}
+
+.slide[data-slide-id="24"] table,
+.slide[data-slide-id="31"] table,
+.slide[data-slide-id="38"] table,
+.slide[data-slide-id="43"] table {
+  height: 100%;
+}
+
+.slide[data-slide-id="28"] .block--character-message {
+  gap: 10px;
+}
+
+.slide[data-slide-id="28"] .message-card {
+  grid-template-columns: 82px minmax(0, 1fr);
+}
+
+.slide[data-slide-id="28"] .message-card .character--inline {
+  width: 82px;
+}
+
+.slide[data-slide-id="28"] .checklist {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px 18px;
+}
+
+.slide[data-slide-id="28"] .checklist li:last-child {
+  grid-column: 1 / -1;
+}
+
+.slide[data-slide-id="32"] .slide-body {
+  padding-right: 310px;
+}
+
+.slide[data-slide-id="32"] > .character--right {
+  right: 35px;
+  bottom: 24px;
+  display: block;
+  width: 265px;
+}
+
+.slide[data-slide-id="32"] .checklist li {
+  min-height: 47px;
+  font-size: 23px;
+}
+
+.slide[data-slide-id="36"] > .character--right {
+  display: block;
+}
+
+.slide[data-slide-id="42"] .slide-body {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) minmax(0, 1fr) auto auto auto;
+}
+
+.slide[data-slide-id="42"] .block--columns,
+.slide[data-slide-id="42"] .column-panel {
+  height: 100%;
+}
+
+.slide[data-slide-id="42"] .column-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slide[data-slide-id="44"] .slide-body {
+  padding-right: 170px;
+}
+
+.slide[data-slide-id="44"] > .character--left {
   display: none;
 }
 
-.slide[data-section-id="appendix"] .checklist {
-  gap: 3px;
+.slide[data-slide-id="44"] > .character--right {
+  right: 18px;
+  bottom: 12px;
+  display: block;
+  width: 135px;
 }
 
-.slide[data-section-id="appendix"] .checklist li {
-  min-height: 34px;
-  gap: 8px;
-  padding: 2px 7px;
-  font-size: 16px;
-  line-height: 1.18;
+/* prompt와 분석이 함께 있는 화면은 전문과 검토 영역을 균형 있게 채웁니다. */
+.slide:is([data-slide-id="22"], [data-slide-id="35"], [data-slide-id="41"]) .slide-body {
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  align-content: stretch;
 }
 
-.slide[data-section-id="appendix"] :is(.check-icon, .check-index) {
-  width: 26px;
-  height: 26px;
-  border-width: 2px;
-  font-size: 12px;
+.slide[data-slide-id="33"] .slide-body {
+  grid-template-rows: minmax(0, 1fr) auto;
+  align-content: stretch;
 }
 
-.slide[data-section-id="appendix"] .check-icon .icon {
-  width: 16px;
-  height: 16px;
+.slide:is([data-slide-id="22"], [data-slide-id="33"], [data-slide-id="35"], [data-slide-id="41"]) .block--prompt {
+  grid-row: 1 / -1;
 }
 
-.slide[data-section-id="appendix"] .comparison-panel {
-  min-height: 0;
-  padding: 9px 12px;
-  border-top-width: 5px;
+.slide:is([data-slide-id="22"], [data-slide-id="33"], [data-slide-id="35"], [data-slide-id="41"]) .checklist li {
+  font-size: 21px;
 }
 
-.slide[data-section-id="appendix"] :is(.comparison-panel h3, .column-panel h3) {
-  margin: 1px 0 5px;
-  font-size: 18px;
-}
-
-.slide[data-section-id="appendix"] .comparison-panel .block--paragraph {
-  font-size: 16px;
-  line-height: 1.25;
-}
-
-.slide[data-section-id="appendix"] .column-panel {
-  padding: 8px 10px;
-  border-top-width: 4px;
-}
-
-.slide[data-section-id="appendix"] .panel-body {
-  gap: 4px;
-}
-
-.slide[data-section-id="appendix"] .block--process li {
-  min-height: 40px;
-  padding: 5px 22px 5px 7px;
-}
-
-.slide[data-section-id="appendix"] .block--process li:last-child {
-  padding-right: 7px;
-}
-
-.slide[data-section-id="appendix"] :is(.process-text, .process-number) {
-  font-size: 13px;
+/* 부록: 전문 크기는 유지하고 우측 요약·검토 요소의 가독성을 복원합니다. */
+.slide[data-section-id="appendix"] > .character {
+  display: none;
 }
 
 .slide[data-section-id="appendix"] .prompt-header {
@@ -2080,19 +2244,107 @@ button:disabled {
   font-size: 15px;
 }
 
+.slide[data-section-id="appendix"] .block--callout {
+  min-height: 58px;
+}
+
 .slide[data-section-id="appendix"] .columns--5 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 7px;
+  gap: 10px;
+}
+
+.slide[data-section-id="appendix"].slide--prompt-and-analysis:not([data-slide-id="50"]) .slide-body {
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  align-content: stretch;
+}
+
+.slide[data-section-id="appendix"].slide--prompt-and-analysis:not([data-slide-id="50"]) .block--prompt {
+  grid-row: 1 / -1;
+}
+
+.slide[data-section-id="appendix"].slide--prompt-and-analysis:not([data-slide-id="50"]) .slide-body > :last-child:not(.block--prompt) {
+  grid-row: -2 / -1;
 }
 
 .slide[data-slide-id="49"] .checklist {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2px 8px;
+  gap: 4px 10px;
 }
 
-.slide[data-slide-id="49"] .block--callout {
-  align-self: end;
+.slide[data-slide-id="49"] .checklist li {
+  min-height: 38px;
+  font-size: 18px;
+}
+
+.slide[data-slide-id="50"] .slide-body {
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
+.slide[data-section-id="appendix"][data-slide-id="50"] .block--table {
+  min-height: 0;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.slide[data-slide-id="50"] .table-wrap :is(th, td) {
+  padding: 4px 10px;
+}
+
+.slide[data-slide-id="50"] .table-wrap thead th {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.slide[data-section-id="appendix"][data-slide-id="50"] .block--prompt {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.slide[data-section-id="appendix"][data-slide-id="50"] .block--callout {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.slide[data-slide-id="52"] .checklist li {
+  min-height: 44px;
+}
+
+.slide[data-slide-id="60"] .slide-body {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: auto auto minmax(0, 1fr);
+  gap: 14px 22px;
+  align-content: stretch;
+}
+
+.slide[data-slide-id="60"] :is(.block--checklist, .block--process) {
+  grid-column: 1 / -1;
+}
+
+.slide[data-slide-id="60"] :is(.block--callout, .block--headline) {
+  min-height: 0;
+  height: 100%;
+  align-content: center;
+}
+
+.slide[data-slide-id="60"] .block--checklist {
+  gap: 8px 22px;
+  font-size: 21px;
+}
+
+.slide[data-slide-id="60"] .block--checklist li {
+  min-height: 50px;
+  font-size: 21px;
+}
+
+.slide[data-slide-id="60"] .block--process li {
+  min-height: 58px;
+  padding: 9px 17px 9px 9px;
+}
+
+.slide[data-slide-id="60"] .process-text {
+  font-size: 17px;
 }
 
 /* 발표자 UI */
