@@ -1,3 +1,5 @@
+> **배포 사이트:** [https://ai-teaching.memilmuk82.com/](https://ai-teaching.memilmuk82.com/)
+
 # AI Prompt Training Deck
 
 중학교 교사 대상 100분 연수에서 사용하는 60장 웹 기반 프레젠테이션입니다. **도입 → 이미지 프롬프트 워밍업 → 교육과정 연결 → 수업 원칙 추출 → Gemini Gem 지시사항 → 단원·전이 시험 → 생성기 규칙 개선 → 부록**을 실제 슬라이드로 구현합니다.
